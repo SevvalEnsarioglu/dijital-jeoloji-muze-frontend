@@ -1,5 +1,5 @@
 import React from "react";
-import "./Hakkimizda.css";
+import "../styles/Hakkimizda.css";
 
 const Hakkimizda = () => {
   return (

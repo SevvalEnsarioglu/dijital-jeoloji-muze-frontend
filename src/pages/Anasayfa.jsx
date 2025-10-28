@@ -1,5 +1,5 @@
 import React from "react";
-import "./Anasayfa.css";
+import "../styles/Anasayfa.css";
 import yebimImg from "../assets/yebim.jpg";
 import dogaltasImg from "../assets/dogaltas.jpg";
 import acikhavaImg from "../assets/acikhava.jpg";
