@@ -1,12 +1,20 @@
 
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   width: 100%;
+  max-width: 100vw;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #FEFCF8 0%, #FFFBF5 100%);
 }
 
 .hakkimizda-container {
   width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   padding: 40px 20px;
   font-family: "Poppins", sans-serif;
@@ -16,9 +24,13 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
 }
+
 #root {
   width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .hero-section {
@@ -175,8 +187,30 @@ html, body {
 }
 
 @media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .hakkimizda-container {
+    padding: 20px 15px;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+  }
+
+  .hero-section {
+    padding-top: 20px;
+    margin-bottom: 40px;
+    padding: 20px 15px 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .hero-section h1 {
     font-size: 28px;
+    margin-bottom: 12px;
   }
 
   .hero-subtitle {
@@ -185,28 +219,171 @@ html, body {
 
   .content-section {
     gap: 40px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   .about-section,
   .visiting-hours-section,
   .contact-section {
-    padding: 25px;
+    padding: 25px 20px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
   }
 
   .about-section h2,
   .visiting-hours-section h2,
   .contact-section h2 {
     font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .about-content {
+    gap: 15px;
+  }
+
+  .about-content p {
+    font-size: 15px;
+    text-align: left;
+    line-height: 1.7;
+  }
+
+  .hours-content {
+    gap: 15px;
   }
 
   .hours-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    padding: 12px 15px;
+  }
+
+  .hours-item .day,
+  .hours-item .time {
+    font-size: 15px;
+    width: 100%;
+  }
+
+  .hours-note {
+    padding: 12px;
+    margin-top: 10px;
+  }
+
+  .hours-note p {
+    font-size: 13px;
   }
 
   .contact-content {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .contact-item {
+    padding: 18px;
+  }
+
+  .contact-item h3 {
+    font-size: 17px;
+  }
+
+  .contact-item p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .hakkimizda-container {
+    padding: 15px 10px;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+  }
+
+  .hero-section {
+    padding-top: 15px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .hero-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .content-section {
+    gap: 30px;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .about-section,
+  .visiting-hours-section,
+  .contact-section {
+    padding: 20px 15px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .about-section h2,
+  .visiting-hours-section h2,
+  .contact-section h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+  }
+
+  .about-content p {
+    font-size: 14px;
+  }
+
+  .hours-item {
+    padding: 10px 12px;
+  }
+
+  .hours-item .day,
+  .hours-item .time {
+    font-size: 14px;
+  }
+
+  .hours-note {
+    padding: 10px;
+  }
+
+  .hours-note p {
+    font-size: 12px;
+  }
+
+  .contact-item {
+    padding: 15px;
+  }
+
+  .contact-item h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .contact-item p {
+    font-size: 13px;
   }
 }
