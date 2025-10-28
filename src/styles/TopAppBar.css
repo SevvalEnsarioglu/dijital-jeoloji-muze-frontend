@@ -1,6 +1,4 @@
-/* ============================================
-   GLOBAL SETTINGS
-   ============================================ */
+
 * {
     box-sizing: border-box;
 }
@@ -11,11 +9,6 @@ html, body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ============================================
-   THEME VARIABLES
-   ============================================ */
-
-/* Light Mode (Default) */
 html {
     --bg-primary: #FEFCF8;
     --bg-secondary: #FFFBF5;
@@ -28,7 +21,6 @@ html {
     --overlay-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Dark Mode */
 html.dark-mode {
     --bg-primary: #0f0d0a;
     --bg-secondary: #1a1510;
@@ -51,9 +43,7 @@ html:not(.dark-mode) {
     color: var(--text-primary);
 }
 
-/* ============================================
-   TOP APP BAR - HEADER
-   ============================================ */
+
 .top-app-bar {
     width: 100%;
     height: 80px;
@@ -72,9 +62,6 @@ html:not(.dark-mode) {
     transition: all 0.3s ease;
 }
 
-/* ============================================
-   LOGO SECTION
-   ============================================ */
 .app-logo {
     display: flex;
     align-items: center;
@@ -117,9 +104,6 @@ html:not(.dark-mode) {
     color: var(--accent-primary);
 }
 
-/* ============================================
-   DESKTOP NAVIGATION
-   ============================================ */
 .nav-links {
     display: flex;
     align-items: center;
@@ -174,9 +158,6 @@ html:not(.dark-mode) {
     width: 70%;
 }
 
-/* ============================================
-   ACTION BUTTONS (Theme & Language)
-   ============================================ */
 .top-bar-actions {
     display: flex;
     align-items: center;
@@ -229,9 +210,6 @@ html:not(.dark-mode) {
     letter-spacing: 0.5px;
 }
 
-/* ============================================
-   HAMBURGER MENU BUTTON
-   ============================================ */
 .hamburger-menu {
     display: none;
     flex-direction: column;
@@ -274,9 +252,6 @@ html:not(.dark-mode) {
     transform: translateY(-9.5px) rotate(-45deg);
 }
 
-/* ============================================
-   OVERLAY - Background Dimming
-   ============================================ */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -298,33 +273,24 @@ html:not(.dark-mode) {
     }
 }
 
-/* ============================================
-   MOBILE SIDEBAR - Hidden by default
-   ============================================ */
 .mobile-sidebar {
     display: none;
 }
 
-/* ============================================
-   RESPONSIVE - TABLET (max-width: 768px)
-   ============================================ */
 @media (max-width: 768px) {
     .top-app-bar {
         padding: 0 1.5rem;
         height: 75px;
     }
 
-    /* Hide Desktop Navigation */
     .desktop-nav {
         display: none;
     }
 
-    /* Show Hamburger Menu */
     .hamburger-menu {
         display: flex;
     }
 
-    /* Mobile Sidebar Styles */
     .mobile-sidebar {
         display: block;
         position: fixed;
@@ -344,7 +310,6 @@ html:not(.dark-mode) {
         right: 0;
     }
 
-    /* Sidebar Header */
     .sidebar-header {
         display: flex;
         align-items: center;
@@ -384,7 +349,6 @@ html:not(.dark-mode) {
         transform: rotate(90deg) scale(0.9);
     }
 
-    /* Sidebar Navigation List */
     .sidebar-nav-list {
         list-style: none;
         margin: 0;
@@ -455,16 +419,12 @@ html:not(.dark-mode) {
     }
 }
 
-/* ============================================
-   RESPONSIVE - MOBILE (max-width: 480px)
-   ============================================ */
 @media (max-width: 480px) {
     .top-app-bar {
         padding: 0 1rem;
         height: 65px;
     }
 
-    /* Adjust Logo for Mobile */
     .logo-link {
         gap: 8px;
     }
@@ -478,7 +438,6 @@ html:not(.dark-mode) {
         font-size: 16px;
     }
 
-    /* Mobile Sidebar Width */
     .mobile-sidebar {
         width: 260px;
     }
@@ -496,7 +455,6 @@ html:not(.dark-mode) {
         font-size: 15px;
     }
 
-    /* Smaller Action Buttons */
     .theme-toggle-btn,
     .language-toggle-btn {
         width: 35px;
@@ -512,7 +470,6 @@ html:not(.dark-mode) {
         font-size: 12px;
     }
 
-    /* Hamburger Menu Size */
     .hamburger-menu {
         width: 26px;
         height: 20px;
@@ -536,9 +493,6 @@ html:not(.dark-mode) {
     }
 }
 
-/* ============================================
-   RESPONSIVE - VERY SMALL MOBILE (max-width: 360px)
-   ============================================ */
 @media (max-width: 360px) {
     .logo-text {
         font-size: 14px;
