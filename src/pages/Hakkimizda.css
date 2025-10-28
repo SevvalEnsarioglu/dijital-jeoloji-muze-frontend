@@ -1,0 +1,212 @@
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.hakkimizda-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #FEFCF8 0%, #FFFBF5 100%);
+  color: #333;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#root {
+  width: 100%;
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-top: 40px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.hero-section h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #4b382a;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #6b5d4f;
+  font-weight: 400;
+}
+
+.content-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.about-section,
+.visiting-hours-section,
+.contact-section {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.about-section:hover,
+.visiting-hours-section:hover,
+.contact-section:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.about-section h2,
+.visiting-hours-section h2,
+.contact-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c2418;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #d9b44a;
+  display: block;
+  width: 100%;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a3f35;
+  text-align: justify;
+}
+
+.hours-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hours-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: rgba(217, 180, 74, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #d9b44a;
+  transition: background-color 0.3s ease;
+}
+
+.hours-item:hover {
+  background-color: rgba(217, 180, 74, 0.15);
+}
+
+.hours-item .day {
+  font-weight: 600;
+  font-size: 16px;
+  color: #2c2418;
+}
+
+.hours-item .time {
+  font-size: 16px;
+  color: #4a3f35;
+  font-weight: 500;
+}
+
+.hours-note {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: rgba(217, 180, 74, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(217, 180, 74, 0.2);
+}
+
+.hours-note p {
+  font-size: 14px;
+  color: #6b5d4f;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.contact-item {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(217, 180, 74, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #d9b44a;
+  margin-bottom: 12px;
+}
+
+.contact-item p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #4a3f35;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .content-section {
+    gap: 40px;
+  }
+
+  .about-section,
+  .visiting-hours-section,
+  .contact-section {
+    padding: 25px;
+  }
+
+  .about-section h2,
+  .visiting-hours-section h2,
+  .contact-section h2 {
+    font-size: 24px;
+  }
+
+  .hours-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
