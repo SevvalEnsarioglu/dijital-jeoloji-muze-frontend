@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
 }
@@ -238,7 +237,6 @@ html:not(.dark-mode) {
     background: var(--accent-primary);
 }
 
-/* Hamburger Animation - X Shape */
 .hamburger-menu.active span:nth-child(1) {
     transform: translateY(9.5px) rotate(45deg);
 }

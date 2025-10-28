@@ -3,12 +3,18 @@ import { Link } from "react-router-dom";
 import { Sun, Moon, Globe, X } from "lucide-react";
 import "../styles/TopAppBar.css";
 
+const MENU_ITEMS = [
+    { path: "/anasayfa", label: "Anasayfa" },
+    { path: "/eserler", label: "Eserler" },
+    { path: "/hakkimizda", label: "Hakkımızda" },
+    { path: "/iletisim", label: "İletişim" }
+];
+
 const TopAppBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [language, setLanguage] = useState("TR");
 
-    // Menü açıkken body scroll'u engelle
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = "hidden";
@@ -39,7 +45,6 @@ const TopAppBar = () => {
 
     return (
         <>
-            {/* Overlay - menü açıkken arka planı karartır */}
             {isMenuOpen && (
                 <div 
                     className="menu-overlay" 
@@ -47,37 +52,22 @@ const TopAppBar = () => {
                     aria-hidden="true"
                 />
             )}
-
             <header className="top-app-bar">
-                <div className="app-logo">
+                <div className="app-logo">    {/* TODO logo gelince buraya eklenecek */}
                     <Link to="/" className="logo-link" onClick={closeMenu}>
                         <span className="logo-text">Dijital Jeoloji Müzesi</span>
                     </Link>
                 </div>
 
-                {/* Desktop Navigation */}
                 <nav className="nav-links desktop-nav">
                     <ul>
-                        <li>
-                            <Link to="/anasayfa" className="nav-item">
-                                Anasayfa
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/eserler" className="nav-item">
-                                Eserler
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/hakkimizda" className="nav-item">
-                                Hakkımızda
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/iletisim" className="nav-item">
-                                İletişim
-                            </Link>
-                        </li>
+                        {MENU_ITEMS.map((item) => (
+                            <li key={item.path}>
+                                <Link to={item.path} className="nav-item">
+                                    {item.label}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 
@@ -101,7 +91,6 @@ const TopAppBar = () => {
                         <span className="language-text">{language}</span>
                     </button>
 
-                    {/* Hamburger Menu Button */}
                     <button
                         className={`hamburger-menu ${isMenuOpen ? "active" : ""}`}
                         onClick={toggleMenu}
@@ -115,7 +104,6 @@ const TopAppBar = () => {
                 </div>
             </header>
 
-            {/* Mobile Sidebar Navigation */}
             <nav className={`mobile-sidebar ${isMenuOpen ? "active" : ""}`}>
                 <div className="sidebar-header">
                     <span className="sidebar-title">Menü</span>
@@ -129,42 +117,17 @@ const TopAppBar = () => {
                 </div>
 
                 <ul className="sidebar-nav-list">
-                    <li>
-                        <Link
-                            to="/anasayfa"
-                            className="sidebar-nav-item"
-                            onClick={closeMenu}
-                        >
-                            Anasayfa
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/eserler"
-                            className="sidebar-nav-item"
-                            onClick={closeMenu}
-                        >
-                            Eserler
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/hakkimizda"
-                            className="sidebar-nav-item"
-                            onClick={closeMenu}
-                        >
-                            Hakkımızda
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/iletisim"
-                            className="sidebar-nav-item"
-                            onClick={closeMenu}
-                        >
-                            İletişim
-                        </Link>
-                    </li>
+                    {MENU_ITEMS.map((item) => (
+                        <li key={item.path}>
+                            <Link
+                                to={item.path}
+                                className="sidebar-nav-item"
+                                onClick={closeMenu}
+                            >
+                                {item.label}
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
             </nav>
         </>

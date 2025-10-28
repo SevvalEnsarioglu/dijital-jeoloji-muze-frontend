@@ -4,10 +4,6 @@ import "../styles/Hakkimizda.css";
 const Hakkimizda = () => {
   return (
     <div className="hakkimizda-container">
-      <section className="hero-section">
-        <h1>Hakkımızda</h1>
-      </section>
-
       <section className="content-section">
         <div className="about-section">
           <h2>YEBİM Hakkında</h2>

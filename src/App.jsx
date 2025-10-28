@@ -14,7 +14,7 @@ function App() {
     return (
         <Router>
             <TopAppBar />
-            <main id="root">
+            <main className="main-content">
                 <Routes>
                     <Route path="/" element={<Anasayfa />} />
                     <Route path="/anasayfa" element={<Anasayfa />} />
@@ -26,7 +26,7 @@ function App() {
             </main>
             <BottomAppBar />
         </Router>
-    )
+    );
 }
 
 export default App;

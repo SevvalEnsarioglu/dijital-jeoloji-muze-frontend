@@ -1,11 +1,16 @@
 import React from "react";
+import "../styles/BottomAppBar.css";
 
-function BottomAppBar() {
+const BottomAppBar = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
-        <header style={{ background: "#132440", color: "white", padding: "1rem" }}>
-            <h1>Bottom App Bar Eklenecek</h1>
-        </header>
+        <footer className="bottom-app-bar">
+            <p className="copyright">
+                &copy; {currentYear} Dijital Jeoloji Müzesi. Tüm hakları saklıdır.
+            </p>
+        </footer>
     );
-}
+};
 
 export default BottomAppBar;
