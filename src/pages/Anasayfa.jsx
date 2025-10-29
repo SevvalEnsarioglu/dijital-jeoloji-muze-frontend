@@ -8,7 +8,7 @@ const Anasayfa = () => {
   return (
     <div className="anasayfa-container">
       <section className="welcome-section">
-        <h1>Ankara Üniversitesi YEBİM Dijital Müzeye Hoş Geldiniz</h1>
+        <h1>Ankara Üniversitesi YEBİM Dijital Müzesine Hoş Geldiniz</h1>
         <button className="qr-button">QR OKUT</button>
       </section>
 

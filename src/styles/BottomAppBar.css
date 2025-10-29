@@ -1,0 +1,28 @@
+.bottom-app-bar {
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    font-family: "Poppins", sans-serif;
+    margin-top: auto;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 -2px 8px var(--shadow-color);
+}
+
+.copyright {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+@media (max-width: 480px) {
+    .bottom-app-bar {
+        padding: 1.25rem 1rem;
+    }
+
+    .copyright {
+        font-size: 12px;
+    }
+}
+
