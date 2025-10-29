@@ -2,13 +2,19 @@ import React from "react";
 import TopAppBar from "./components/TopAppBar.jsx";
 import BottomAppBar from "./components/BottomAppBar.jsx";
 import "./App.css";
-
+import FloatingQrButton from "./components/FloatingQrButton";
 import Anasayfa from "./pages/Anasayfa.jsx";
 import Hakkimizda from "./pages/Hakkimizda.jsx";
 import Eserler from "./pages/Eserler.jsx";
 import EserDetay from "./pages/EserDetay.jsx";
 import Iletisim from "./pages/Iletisim.jsx";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,useLocation } from "react-router-dom";
+
+function QrIfNotHome() {
+    const location = useLocation();
+    const hideQr = location.pathname === "/" || location.pathname === "/anasayfa";
+    return hideQr ? null : <FloatingQrButton />;
+}
 
 function App() {
     return (
@@ -25,6 +31,7 @@ function App() {
                 </Routes>
             </main>
             <BottomAppBar />
+            <QrIfNotHome />
         </Router>
     );
 }
