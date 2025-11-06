@@ -1,4 +1,57 @@
 /* ============================================
+   THEME TOKENS (Light / Dark)
+   ============================================ */
+
+/* Varsayılan tema */
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --surface: #f8fafc;
+  --surface-2: #eef2f7;
+  --border: #e5e7eb;
+  --link: #1d4ed8;
+
+  /* mevcut dosyanla uyumlu track */
+  --accent-primary: #ffcf80;
+  --accent-secondary: #ffb84d;
+  --bg-secondary: #f1f5f9;
+
+  --overlay: rgba(0, 0, 0, 0.35);
+}
+
+/* Dark tema */
+:root[data-theme="dark"] {
+  --bg: #0b0f17;
+  --text: #e5e7eb;
+  --surface: #111827;
+  --surface-2: #0f172a;
+  --border: #1f2937;
+  --link: #93c5fd;
+  --accent-primary: #ffcf80;
+  --accent-secondary: #ffb84d;
+  --bg-secondary: #0f172a;
+
+  --overlay: rgba(255, 255, 255, 0.18);
+}
+
+/* (opsiyonel) data-theme yoksa sistem koyu tercihi */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0b0f17;
+    --text: #e5e7eb;
+    --surface: #111827;
+    --surface-2: #0f172a;
+    --border: #1f2937;
+    --link: #93c5fd;
+
+    --accent-primary: #7dd3fc;
+    --accent-secondary: #38bdf8;
+    --bg-secondary: #0f172a;
+
+    --overlay: rgba(255, 255, 255, 0.18);
+  }
+}
+/* ============================================
    GLOBAL STYLES & RESET
    ============================================ */
 
@@ -26,6 +79,8 @@ html {
 
 body {
   margin: 0;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   min-width: 320px;
   display: flex;
@@ -63,7 +118,7 @@ main {
 /* Link stilleri */
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--link);
   transition: color 0.3s ease;
 }
 
@@ -79,6 +134,8 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
+  color: var(--text);
+  background: transparent;
 }
 
 button:focus-visible {

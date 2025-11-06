@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Sun, Moon, Globe, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/TopAppBar.css";
 
 const MENU_ITEMS = [
@@ -9,11 +9,28 @@ const MENU_ITEMS = [
     { path: "/hakkimizda", label: "Hakkımızda" },
     { path: "/iletisim", label: "İletişim" }
 ];
+const THEME_KEY = "theme";
 
 const TopAppBar = () => {
+    const location = useLocation();
+
+    // Sistem tercihi (ilk yüklemede)
+    const prefersDark =
+        typeof window !== "undefined" &&
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    // Kalıcı tema
+    const [theme, setTheme] = useState(
+        localStorage.getItem(THEME_KEY) || (prefersDark ? "dark" : "light")
+    );
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
     const [language, setLanguage] = useState("TR");
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem(THEME_KEY, theme);
+    }, [theme]);
 
     useEffect(() => {
         if (isMenuOpen) {
@@ -35,8 +52,7 @@ const TopAppBar = () => {
     };
 
     const toggleTheme = () => {
-        setIsDarkMode(!isDarkMode);
-        document.documentElement.classList.toggle("dark-mode");
+        setTheme((prev) => (prev === "dark" ? "light" : "dark"));
     };
 
     const toggleLanguage = () => {
@@ -76,9 +92,11 @@ const TopAppBar = () => {
                         className="theme-toggle-btn"
                         onClick={toggleTheme}
                         aria-label="Tema değiştir"
-                        title={isDarkMode ? "Açık moda geç" : "Koyu moda geç"}
+                        title={theme === "dark" ? "Açık moda geç" : "Koyu moda geç"}
+
                     >
-                        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                        {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+
                     </button>
 
                     <button
