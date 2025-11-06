@@ -9,7 +9,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: linear-gradient(180deg, #FEFCF8 0%, #FFFBF5 100%);
+  background: var(--bg);
 }
 
 .hakkimizda-container {
@@ -18,8 +18,8 @@ html, body {
   min-height: 100vh;
   padding: 40px 20px;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(180deg, #FEFCF8 0%, #FFFBF5 100%);
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -44,14 +44,14 @@ html, body {
 .hero-section h1 {
   font-size: 36px;
   font-weight: 700;
-  color: #4b382a;
+  color: var(--text);
   margin-bottom: 15px;
   letter-spacing: 0.5px;
 }
 
 .hero-subtitle {
   font-size: 18px;
-  color: #6b5d4f;
+  color: color-mix(in srgb, var(--text) 80%, transparent);
   font-weight: 400;
 }
 
@@ -66,17 +66,17 @@ html, body {
 .about-section,
 .visiting-hours-section,
 .contact-section {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: color-mix(in srgb, var(--surface) 85%, transparent);
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px var(--shadow-color, rgba(0, 0, 0, 0.05));
   transition: box-shadow 0.3s ease;
 }
 
 .about-section:hover,
 .visiting-hours-section:hover,
 .contact-section:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px var(--shadow-color, rgba(0, 0, 0, 0.08));
 }
 
 .about-section h2,
@@ -84,10 +84,10 @@ html, body {
 .contact-section h2 {
   font-size: 28px;
   font-weight: 700;
-  color: #2c2418;
+  color: var(--text);
   margin-bottom: 25px;
   padding-bottom: 10px;
-  border-bottom: 3px solid #d9b44a;
+  border-bottom: 3px solid var(--accent-primary);
   display: block;
   width: 100%;
 }
@@ -101,7 +101,7 @@ html, body {
 .about-content p {
   font-size: 16px;
   line-height: 1.8;
-  color: #4a3f35;
+  color: color-mix(in srgb, var(--text) 85%, transparent);
   text-align: justify;
 }
 
@@ -116,39 +116,39 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: rgba(217, 180, 74, 0.1);
+  background-color: color-mix(in srgb, var(--accent-primary) 15%, transparent);
   border-radius: 8px;
-  border-left: 4px solid #d9b44a;
+  border-left: 4px solid var(--accent-primary);
   transition: background-color 0.3s ease;
 }
 
 .hours-item:hover {
-  background-color: rgba(217, 180, 74, 0.15);
+  background-color: color-mix(in srgb, var(--accent-primary) 22%, transparent);
 }
 
 .hours-item .day {
   font-weight: 600;
   font-size: 16px;
-  color: #2c2418;
+  color: var(--text);
 }
 
 .hours-item .time {
   font-size: 16px;
-  color: #4a3f35;
+  color: color-mix(in srgb, var(--text) 85%, transparent);
   font-weight: 500;
 }
 
 .hours-note {
   margin-top: 15px;
   padding: 15px;
-  background-color: rgba(217, 180, 74, 0.05);
+  background-color: color-mix(in srgb, var(--accent-primary) 10%, transparent);
   border-radius: 8px;
-  border: 1px solid rgba(217, 180, 74, 0.2);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 35%, transparent);
 }
 
 .hours-note p {
   font-size: 14px;
-  color: #6b5d4f;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
   line-height: 1.6;
   margin: 0;
 }
@@ -161,28 +161,28 @@ html, body {
 
 .contact-item {
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: color-mix(in srgb, var(--surface) 85%, transparent);
   border-radius: 8px;
-  border: 1px solid rgba(217, 180, 74, 0.2);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 35%, transparent);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-color, rgba(0, 0, 0, 0.1));
 }
 
 .contact-item h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #d9b44a;
+  color: var(--accent-primary);
   margin-bottom: 12px;
 }
 
 .contact-item p {
   font-size: 15px;
   line-height: 1.7;
-  color: #4a3f35;
+  color: color-mix(in srgb, var(--text) 85%, transparent);
   margin: 0;
 }
 

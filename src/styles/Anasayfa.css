@@ -8,7 +8,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: linear-gradient(180deg, #FEFCF8 0%, #FFFBF5 100%);
+  background: var(--bg);
 }
 
 #root {
@@ -45,8 +45,8 @@ html, body {
   min-height: 100vh;
   padding: 40px 20px;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(180deg, #FEFCF8 0%, #FFFBF5 100%);
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,7 @@ html, body {
 
 .welcome-section h1 {
   font-size: 28px;
-  color: #4b382a;
+  color: var(--text);
   margin-bottom: 35px;
   text-align: center;
   width: 100%;
@@ -94,16 +94,16 @@ html, body {
 }
 
 .qr-button {
-  background: linear-gradient(135deg, #d9b44a 0%, #c79f2e 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   border: none;
-  color: black;
+  color: #1a1510;
   font-size: 18px;
   font-weight: 600;
   padding: 14px 32px;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(217, 180, 74, 0.3);
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--accent-primary) 40%, transparent);
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.8s ease-out 0.2s both;
@@ -128,14 +128,14 @@ html, body {
 }
 
 .qr-button:hover {
-  background: linear-gradient(135deg, #c79f2e 0%, #b8901d 100%);
+  background: linear-gradient(135deg, var(--accent-secondary) 0%, #b8901d 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(217, 180, 74, 0.4);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-primary) 50%, transparent);
 }
 
 .qr-button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(217, 180, 74, 0.3);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--accent-primary) 35%, transparent);
 }
 
 .museum-section {
@@ -239,13 +239,13 @@ html, body {
 }
 
 .museum-item:hover .museum-text-content {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: color-mix(in srgb, var(--surface) 50%, transparent);
 }
 
 .museum-title {
   font-size: 24px;
   font-weight: 700;
-  color: #2c2418;
+  color: var(--text);
   margin-bottom: 10px;
   line-height: 1.3;
   position: relative;
@@ -260,7 +260,7 @@ html, body {
   left: 0;
   width: 50px;
   height: 3px;
-  background: linear-gradient(90deg, #d9b44a 0%, #c79f2e 100%);
+  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
@@ -270,20 +270,20 @@ html, body {
 }
 
 .museum-item:hover .museum-title {
-  color: #1a1510;
+  color: var(--text);
 }
 
 .museum-text {
   font-size: 15px;
   line-height: 1.8;
-  color: #4a3f35;
+  color: color-mix(in srgb, var(--text) 85%, transparent);
   text-align: left;
   margin: 0;
   transition: color 0.3s ease;
 }
 
 .museum-item:hover .museum-text {
-  color: #3d3329;
+  color: var(--text);
 }
 
 @media (max-width: 768px) {

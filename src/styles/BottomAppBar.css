@@ -1,18 +1,19 @@
 .bottom-app-bar {
     width: 100%;
-    background-color: var(--bg-primary);
-    border-top: 1px solid var(--border-color);
+    background-color: var(--surface);
+    border-top: 1px solid var(--border);
     font-family: "Poppins", sans-serif;
     margin-top: auto;
     padding: 1.5rem 2rem;
     text-align: center;
-    box-shadow: 0 -2px 8px var(--shadow-color);
+    box-shadow: 0 -2px 8px var(--shadow-color, rgba(0, 0, 0, 0.08));
 }
 
 .copyright {
     margin: 0;
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--text);
+    opacity: 0.8;
     font-weight: 400;
 }
 
