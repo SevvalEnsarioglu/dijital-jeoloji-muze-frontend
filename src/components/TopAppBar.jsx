@@ -14,7 +14,6 @@ const THEME_KEY = "theme";
 const TopAppBar = () => {
     const location = useLocation();
 
-    // Sistem tercihi (ilk yüklemede)
     const prefersDark =
         typeof window !== "undefined" &&
         window.matchMedia &&
