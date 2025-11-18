@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Sun, Moon, Globe, X } from "lucide-react";
+import { Sun, Moon, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/TopAppBar.css";
 
@@ -26,7 +26,7 @@ const TopAppBar = () => {
     );
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [language, setLanguage] = useState("TR");
+
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
         localStorage.setItem(THEME_KEY, theme);
@@ -55,9 +55,6 @@ const TopAppBar = () => {
         setTheme((prev) => (prev === "dark" ? "light" : "dark"));
     };
 
-    const toggleLanguage = () => {
-        setLanguage(language === "TR" ? "EN" : "TR");
-    };
 
     return (
         <>
@@ -98,16 +95,7 @@ const TopAppBar = () => {
                         {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
 
                     </button>
-
-                    <button
-                        className="language-toggle-btn"
-                        onClick={toggleLanguage}
-                        aria-label="Dil değiştir"
-                        title="Dili değiştir"
-                    >
-                        <Globe size={18} />
-                        <span className="language-text">{language}</span>
-                    </button>
+                    
 
                     <button
                         className={`hamburger-menu ${isMenuOpen ? "active" : ""}`}
