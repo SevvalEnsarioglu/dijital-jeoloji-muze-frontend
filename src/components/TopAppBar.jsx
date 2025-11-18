@@ -18,8 +18,6 @@ const TopAppBar = () => {
         typeof window !== "undefined" &&
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    // Kalıcı tema
     const [theme, setTheme] = useState(
         localStorage.getItem(THEME_KEY) || (prefersDark ? "dark" : "light")
     );
