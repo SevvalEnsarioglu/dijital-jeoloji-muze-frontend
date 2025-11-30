@@ -39,28 +39,6 @@ const Hakkimizda = () => {
             </div>
           </div>
         </div>
-
-        <div className="contact-section">
-          <h2>İletişim</h2>
-          <div className="contact-content">
-            <div className="contact-item">
-              <h3>Adres</h3>
-              <p>
-                Ankara Üniversitesi<br />
-                50. Yıl Kampüsü Dekanlık Binası<br />
-                Gölbaşı, Ankara
-              </p>
-            </div>
-            <div className="contact-item">
-              <h3>Telefon</h3>
-              <p>+90 (312) 484 21 29</p>
-            </div>
-            <div className="contact-item">
-              <h3>E-posta</h3>
-              <p>yebim@ankara.edu.tr</p>
-            </div>
-          </div>
-        </div>
       </section>
     </div>
   );
