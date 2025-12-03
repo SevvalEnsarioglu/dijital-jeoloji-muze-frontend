@@ -9,26 +9,21 @@ export const getHakkimizda = async () => {
 };
 
 // POST – Hakkımızda metni oluştur (ilk defa)
-export const createHakkimizda = async (title, content) => {
-    const response = await axios.post(API_URL, {
-        title,
-        content
-    });
+export const createHakkimizda = async (data) => {
+    // data: { hakkinda, adres, telefon, email }
+    const response = await axios.post(API_URL, data);
     return response.data;
 };
 
 // PUT – Hakkımızda metnini tamamen güncelle
-export const updateHakkimizda = async (title, content) => {
-    const response = await axios.put(API_URL, {
-        title,
-        content
-    });
+export const updateHakkimizda = async (data) => {
+    // data: { hakkinda, adres, telefon, email }
+    const response = await axios.put(API_URL, data);
     return response.data;
 };
 
-// PATCH – Hakkımızda kısmi güncelleme
+// PATCH – Kısmi güncelleme
 export const patchHakkimizda = async (fields) => {
-    // örnek fields: { title: "Yeni Başlık" }
     const response = await axios.patch(API_URL, fields);
     return response.data;
 };
