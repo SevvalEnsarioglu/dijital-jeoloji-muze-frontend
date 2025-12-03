@@ -1,70 +1,98 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getPublicAbout } from "../services/publicAboutService";
 import "../styles/Hakkimizda.css";
 
-const Hakkimizda = () => {
+export default function Hakkimizda() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const res = await getPublicAbout();
+        setData(res);
+      } catch (err) {
+        console.error("Hakkımızda verisi çekilemedi:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
+
+  if (loading) {
+    return <p style={{ textAlign: "center" }}>Yükleniyor...</p>;
+  }
+
+  if (!data) {
+    return <p style={{ textAlign: "center" }}>Hakkımızda verisi bulunamadı.</p>;
+  }
+
   return (
     <div className="hakkimizda-container">
-      <section className="content-section">
-        <div className="about-section">
-          <h2>YEBİM Hakkında</h2>
-          <div className="about-content">
-            <p>
-              Ankara Üniversitesi YEBİM (Yer Bilimleri ve Maden Araştırmaları Merkezi); yer bilimi alanında araştırma, eğitim ve proje geliştirme faaliyetlerini sürdüren öncü bir merkezdir. Merkezimiz maden, mermer, kaya ve toprakların oluşumunu ve ekonomik potansiyelini inceleyerek bu alanda uzman bilim insanları yetiştirmeyi hedeflemektedir. Ayrıca kamu kurumları ve özel kuruluşlarla iş birliği yaparak yenilenebilir enerji ve doğal kaynakların sürdürülebilir kullanımına katkı sağlamaktadır.
-            </p>
-            <p>
-              Koleksiyonumuzda, Türkiye'nin farklı bölgelerinden ve dünyanın çeşitli yerlerinden 
-              toplanan mineral, kayaç, fosil ve jeolojik örnekler yer almaktadır. YEBİM’in misyonu; yerbilimi bilgisini kullanarak topluma hizmet eden, çok disiplinli projeler üreten ve bilimsel çalışmalarla toplumun bilinçlenmesine destek olan bir araştırma merkezi olmaktır. Vizyonu ise yerbilimleri alanında ileri düzey altyapı sağlayan sürekli gelişen ve uluslararası standartlarda bilgi aktarabilen bir merkez olarak hizmet vermektir.
-            </p>
 
+      {/* HERO */}
+      <div className="content-section">
+
+        {/* ABOUT SECTION */}
+        <div className="about-section">
+          <h2>Hakkımızda</h2>
+          <div className="about-content">
+            <p>{data.hakkinda || "Henüz bir açıklama eklenmemiş."}</p>
           </div>
         </div>
 
+        {/* ziyaret saatleri sonra panele tasınabilir) */}
         <div className="visiting-hours-section">
           <h2>Ziyaret Saatleri</h2>
+
           <div className="hours-content">
             <div className="hours-item">
               <span className="day">Pazartesi - Cuma</span>
               <span className="time">09:00 - 17:00</span>
             </div>
+
             <div className="hours-item">
               <span className="day">Cumartesi</span>
               <span className="time">10:00 - 16:00</span>
             </div>
+
             <div className="hours-item">
               <span className="day">Pazar</span>
               <span className="time">Kapalı</span>
             </div>
+
             <div className="hours-note">
-              <p>Müze resmi tatillerde kapalıdır. Grup ziyaretleri için önceden randevu almanız önerilir.</p>
+              <p>Ziyaret saatleri dönemsel olarak değişiklik gösterebilir.</p>
             </div>
           </div>
         </div>
 
+        {/* CONTACT SECTION */}
         <div className="contact-section">
-          <h2>İletişim</h2>
+          <h2>İletişim Bilgileri</h2>
+
           <div className="contact-content">
+
             <div className="contact-item">
-              <h3>Adres</h3>
-              <p>
-                Ankara Üniversitesi<br />
-                50. Yıl Kampüsü Dekanlık Binası<br />
-                Gölbaşı, Ankara
-              </p>
+              <h3>📍 Adres</h3>
+              <p>{data.adres || "Adres bilgisi eklenmemiş."}</p>
             </div>
+
             <div className="contact-item">
-              <h3>Telefon</h3>
-              <p>+90 (312) 484 21 29</p>
+              <h3>📞 Telefon</h3>
+              <p>{data.telefon || "Telefon bilgisi eklenmemiş."}</p>
             </div>
+
             <div className="contact-item">
-              <h3>E-posta</h3>
-              <p>yebim@ankara.edu.tr</p>
+              <h3>✉️ Email</h3>
+              <p>{data.email || "Email bilgisi eklenmemiş."}</p>
             </div>
+
           </div>
         </div>
-      </section>
+
+      </div>
     </div>
   );
-};
-
-export default Hakkimizda;
-
+}

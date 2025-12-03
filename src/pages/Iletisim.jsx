@@ -1,11 +1,9 @@
 import React from "react";
 
-function Iletisim() {
-    return (
-        <header style={{ background: "#132440", color: "white", padding: "1rem" }}>
-            <h1>Iletisim</h1>
-        </header>
-    );
+export default function Iletisim() {
+  return (
+    <div style={{ padding: "40px", textAlign: "center" }}>
+      <h1>İletişim</h1>
+    </div>
+  );
 }
-
-export default Iletisim;
