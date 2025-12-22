@@ -1,0 +1,85 @@
+.manage-contact {
+  padding: 20px;
+}
+
+.admin-topbar {
+  background: #1e293b;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contact-table th,
+.contact-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.contact-table tr {
+  cursor: pointer;
+}
+
+.contact-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.okundu {
+  color: green;
+  font-weight: bold;
+}
+
+.okunmadi {
+  color: red;
+  font-weight: bold;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 25px;
+  width: 420px;
+  border-radius: 10px;
+}
+
+.message-box {
+  background: #f9fafb;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modal-actions button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.modal-actions .toggle {
+  background: #2563eb;
+  color: white;
+}
+
+.modal-actions .delete {
+  background: #dc2626;
+  color: white;
+}

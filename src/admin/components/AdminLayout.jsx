@@ -1,18 +1,14 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+import AdminTopBar from "./AdminTopBar";
 
 export default function AdminLayout({ children }) {
-    return (
-        <div style={{ display: "flex", minHeight: "100vh" }}>
-            <Sidebar />
+  return (
+    <div className="admin-root">
+      <AdminTopBar />
 
-            <div style={{
-                flex: 1,
-                padding: "20px",
-                background: "#f3f4f6"
-            }}>
-                {children}
-            </div>
-        </div>
-    );
+      <div className="admin-content">
+        {children}
+      </div>
+    </div>
+  );
 }

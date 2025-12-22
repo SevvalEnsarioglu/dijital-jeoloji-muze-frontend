@@ -1,0 +1,87 @@
+.manage-about {
+  background: #ffffff;
+  margin-top: 0;
+  margin-left: 12px;
+  padding-top: 0;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+.about-card {
+  background: #fffaf5;
+  box-shadow: none;           /* kart hissini azalt */
+  
+  
+}
+
+.manage-about label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.manage-about textarea,
+.manage-about input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.manage-about textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.manage-about textarea:focus,
+.manage-about input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* === BUTONLAR === */
+
+.actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.actions button {
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+/* Güncelle */
+.actions .save {
+  background: #2563eb;
+  color: white;
+}
+
+.actions .save:hover {
+  background: #1e40af;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Sil */
+.actions .delete {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.actions .delete:hover {
+  background: #fecaca;
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.25);
+  transform: translateY(-1px);
+}

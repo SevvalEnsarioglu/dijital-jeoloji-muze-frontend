@@ -13,6 +13,7 @@ import Dashboard from "./admin/pages/Dashboard";
 import ManageAbout from "./admin/pages/ManageAbout";
 import AdminRoute from "./admin/AdminRoute";
 import AdminLayout from "./admin/components/AdminLayout";
+import ManageContact from "./admin/pages/ManageContact";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 // QR sadece admin dışında çalışsın
 function QrIfNotHome() {
@@ -77,17 +78,41 @@ function App() {
                         }
                     />
 
-                    {/* Admin hakkımızda yönetim */}
+                    {/* Admin dashboard */}
                     <Route
-                        path="/admin/hakkimizda"
-                        element={
-                            
-                                
-                                <ManageAbout />
-                               
-                            //adminlayout eklenecek sonra
-                        }
+                    path="/admin/dashboard"
+                    element={
+                        <AdminRoute>
+                        <AdminLayout>
+                            <Dashboard />
+                        </AdminLayout>
+                        </AdminRoute>
+                    }
                     />
+
+                    {/* Admin hakkımızda */}
+                    <Route
+                    path="/admin/hakkimizda"
+                    element={
+                        <AdminLayout>
+                        <ManageAbout />
+                        </AdminLayout>
+                    }
+                    />
+
+                    {/* Admin iletişim */}
+                    <Route
+                    path="/admin/iletisim"
+                    element={
+                        <AdminLayout>
+                            <ManageContact />
+                        </AdminLayout>
+                        
+                    }
+                    />
+
+
+
 
                 </Routes>
             </LayoutWrapper>
