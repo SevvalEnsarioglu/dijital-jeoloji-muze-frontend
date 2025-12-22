@@ -182,3 +182,9 @@ img {
   background-color: var(--accent-primary);
   color: #1a1510;
 }
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
