@@ -17,7 +17,6 @@ export const createHakkimizda = async (data) => {
 
 // PUT – Hakkımızda metnini tamamen güncelle
 export const updateHakkimizda = async (data) => {
-    // data: { hakkinda, adres, telefon, email }
     const response = await axios.put(API_URL, data);
     return response.data;
 };

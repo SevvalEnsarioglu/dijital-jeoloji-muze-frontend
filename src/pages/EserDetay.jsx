@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "../styles/EserDetay.css";
 
 const EserDetay = () => {
     const { id } = useParams(); // URL'den eser ID'sini alıyoruz
@@ -15,41 +16,35 @@ const EserDetay = () => {
         setLoading(false);
     }, [id]);
 
-    if (loading) return <div>Yükleniyor...</div>;
+    if (loading) return <div className="loading-text">Yükleniyor...</div>;
 
     return (
-        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
-            {/* GÖRSEL */}
-            <div
-                style={{
-                    width: "100%",
-                    height: "350px",
-                    backgroundColor: "#e2e2e2",
-                    borderRadius: "10px",
-                    marginBottom: "20px",
-                }}
-            >
-                {/* TODO: Görsel */}
-                {/* <img src={eser.image} alt={eser.name} /> */}
+        <div className="eser-detay-page">
+            <div className="eser-detay-container">
+                {/* GÖRSEL */}
+                <div className="eser-detay-image">
+                    {/* TODO: Görsel */}
+                    {/* <img src={eser.image} alt={eser.name} /> */}
+                </div>
+
+                {/* BAŞLIK */}
+                <h1 className="eser-detay-title">
+                    {eser ? eser.name : "Eser Adı (TODO)"}
+                </h1>
+
+                {/* KATEGORİ / TAŞ TÜRÜ */}
+                <h3 className="eser-detay-category">
+                    {eser ? eser.category : "Taş türü (TODO)"}
+                </h3>
+
+                {/* AÇIKLAMA METNİ */}
+                <p className="eser-detay-description">
+                    {eser
+                        ? eser.description
+                        : `Bu alanda eserin detaylı açıklaması yer alacak. 
+                        (TODO: Backend'den detay metni çekilecek.)`}
+                </p>
             </div>
-
-            {/* BAŞLIK */}
-            <h1 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "10px" }}>
-                {eser ? eser.name : "Eser Adı (TODO)"}
-            </h1>
-
-            {/* KATEGORİ / TAŞ TÜRÜ */}
-            <h3 style={{ fontSize: "18px", color: "#666", marginBottom: "20px" }}>
-                {eser ? eser.category : "Taş türü (TODO)"}
-            </h3>
-
-            {/* AÇIKLAMA METNİ */}
-            <p style={{ fontSize: "16px", lineHeight: "1.6", color: "#444" }}>
-                {eser
-                    ? eser.description
-                    : `Bu alanda eserin detaylı açıklaması yer alacak. 
-                    (TODO: Backend'den detay metni çekilecek.)`}
-            </p>
         </div>
     );
 };

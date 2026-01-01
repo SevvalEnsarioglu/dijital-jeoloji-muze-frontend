@@ -11,6 +11,8 @@ import Iletisim from "./pages/Iletisim.jsx";
 import Login from "./admin/pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
 import ManageAbout from "./admin/pages/ManageAbout";
+import ManageHomepage from "./admin/pages/ManageHomepage";
+import ManageVisitingHours from "./admin/pages/ManageVisitingHours";
 import AdminRoute from "./admin/AdminRoute";
 import AdminLayout from "./admin/components/AdminLayout";
 import ManageContact from "./admin/pages/ManageContact";
@@ -33,8 +35,8 @@ function LayoutWrapper({ children }) {
     const isAdmin = location.pathname.startsWith("/admin");
 
     if (isAdmin) {
-        // Admin sayfalarında TopBar, BottomBar, QR yok
-        return <>{children}</>;
+        // Admin sayfalarında TopBar, BottomBar, QR yok - tamamen ayrı layout
+        return <div style={{ width: '100%', maxWidth: '100vw', overflowX: 'hidden' }}>{children}</div>;
     }
 
     // Kullanıcı layoutu
@@ -78,37 +80,44 @@ function App() {
                         }
                     />
 
-                    {/* Admin dashboard */}
+                    {/* Admin ana sayfa */}
                     <Route
-                    path="/admin/dashboard"
-                    element={
-                        <AdminRoute>
-                        <AdminLayout>
-                            <Dashboard />
-                        </AdminLayout>
-                        </AdminRoute>
-                    }
+                        path="/admin/anasayfa"
+                        element={
+                            <AdminLayout>
+                                <ManageHomepage />
+                            </AdminLayout>
+                        }
                     />
 
                     {/* Admin hakkımızda */}
                     <Route
-                    path="/admin/hakkimizda"
-                    element={
-                        <AdminLayout>
-                        <ManageAbout />
-                        </AdminLayout>
-                    }
+                        path="/admin/hakkimizda"
+                        element={
+                            <AdminLayout>
+                                <ManageAbout />
+                            </AdminLayout>
+                        }
                     />
 
                     {/* Admin iletişim */}
                     <Route
-                    path="/admin/iletisim"
-                    element={
-                        <AdminLayout>
-                            <ManageContact />
-                        </AdminLayout>
-                        
-                    }
+                        path="/admin/iletisim"
+                        element={
+                            <AdminLayout>
+                                <ManageContact />
+                            </AdminLayout>
+                        }
+                    />
+
+                    {/* Admin ziyaret saatleri */}
+                    <Route
+                        path="/admin/ziyaret-saatleri"
+                        element={
+                            <AdminLayout>
+                                <ManageVisitingHours />
+                            </AdminLayout>
+                        }
                     />
 
 

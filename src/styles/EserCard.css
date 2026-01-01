@@ -1,0 +1,59 @@
+.eser-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.eser-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.eser-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.eser-card.skeleton {
+    cursor: default;
+}
+
+.eser-card-image {
+    width: 100%;
+    height: 160px;
+    background-color: var(--surface-2);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.eser-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.eser-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.eser-card-description {
+    color: var(--text);
+    opacity: 0.7;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.eser-card-link-text {
+    margin-top: 10px;
+    color: var(--link);
+    font-weight: 500;
+    font-size: 14px;
+}

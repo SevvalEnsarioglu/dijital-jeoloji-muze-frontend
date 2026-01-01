@@ -9,9 +9,11 @@ export default function AdminTopBar() {
       </div>
 
       <nav className="admin-topbar-center">
-        <NavLink to="/admin/dashboard">Anasayfa</NavLink>
+        <NavLink to="/admin/dashboard">Dashboard</NavLink>
+        <NavLink to="/admin/anasayfa">Ana Sayfa</NavLink>
         <NavLink to="/admin/eserler">Eserler</NavLink>
         <NavLink to="/admin/hakkimizda">Hakkımızda</NavLink>
+        <NavLink to="/admin/ziyaret-saatleri">Ziyaret Saatleri</NavLink>
         <NavLink to="/admin/iletisim">İletişim</NavLink>
       </nav>
     </header>

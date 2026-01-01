@@ -62,6 +62,10 @@ export default function ManageAbout() {
 
   return (
     <div className="manage-about">
+      <div className="header">
+        <h1>Hakkımızda Yönetimi</h1>
+      </div>
+
       <div className="about-card">
         <label>Hakkımızda Metni</label>
         <textarea
@@ -92,13 +96,13 @@ export default function ManageAbout() {
         />
 
         <div className="actions">
-        <button className="delete" onClick={remove}>
+          <button className="delete" onClick={remove}>
             Sil
-        </button>
+          </button>
 
-        <button className="save" onClick={save}>
+          <button className="save" onClick={save}>
             Güncelle
-        </button>
+          </button>
         </div>
 
       </div>

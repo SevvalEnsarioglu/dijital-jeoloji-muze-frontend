@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { getPublicAbout } from "../services/publicAboutService";
+import { getAllZiyaretSaatleri } from "../services/publicZiyaretSaatleriService";
 import "../styles/Hakkimizda.css";
 
 export default function Hakkimizda() {
   const [data, setData] = useState(null);
+  const [ziyaretSaatleri, setZiyaretSaatleri] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
       try {
-        const res = await getPublicAbout();
-        setData(res);
+        const [aboutRes, hoursRes] = await Promise.all([
+          getPublicAbout(),
+          getAllZiyaretSaatleri()
+        ]);
+        setData(aboutRes);
+        setZiyaretSaatleri(hoursRes);
       } catch (err) {
-        console.error("Hakkımızda verisi çekilemedi:", err);
+        console.error("Veri çekilemedi:", err);
       } finally {
         setLoading(false);
       }
@@ -28,6 +34,12 @@ export default function Hakkimizda() {
     return <p style={{ textAlign: "center" }}>Hakkımızda verisi bulunamadı.</p>;
   }
 
+  // Saat formatını düzenle (HH:mm:ss -> HH:mm)
+  const formatTime = (timeString) => {
+    if (!timeString) return null;
+    return timeString.substring(0, 5); // "09:00:00" -> "09:00"
+  };
+
   return (
     <div className="hakkimizda-container">
 
@@ -42,25 +54,25 @@ export default function Hakkimizda() {
           </div>
         </div>
 
-        {/* ziyaret saatleri sonra panele tasınabilir) */}
+        {/* ZİYARET SAATLERİ */}
         <div className="visiting-hours-section">
           <h2>Ziyaret Saatleri</h2>
 
           <div className="hours-content">
-            <div className="hours-item">
-              <span className="day">Pazartesi - Cuma</span>
-              <span className="time">09:00 - 17:00</span>
-            </div>
-
-            <div className="hours-item">
-              <span className="day">Cumartesi</span>
-              <span className="time">10:00 - 16:00</span>
-            </div>
-
-            <div className="hours-item">
-              <span className="day">Pazar</span>
-              <span className="time">Kapalı</span>
-            </div>
+            {ziyaretSaatleri.length > 0 ? (
+              ziyaretSaatleri.map((saat) => (
+                <div key={saat.id} className="hours-item">
+                  <span className="day">{saat.gun}</span>
+                  <span className="time">
+                    {saat.acilisSaati && saat.kapanisSaati
+                      ? `${formatTime(saat.acilisSaati)} - ${formatTime(saat.kapanisSaati)}`
+                      : "Kapalı"}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <p>Ziyaret saatleri henüz eklenmemiş.</p>
+            )}
 
             <div className="hours-note">
               <p>Ziyaret saatleri dönemsel olarak değişiklik gösterebilir.</p>
