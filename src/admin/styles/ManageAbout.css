@@ -1,16 +1,31 @@
 .manage-about {
-  background: #ffffff;
-  margin-top: 0;
-  margin-left: 12px;
-  padding-top: 0;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  max-width: min(1200px, 100vw);
+  margin: 0 auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
+
+/* === HEADER === */
+.manage-about .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.manage-about h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
 .about-card {
-  background: #fffaf5;
-  box-shadow: none;           /* kart hissini azalt */
-  
-  
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .manage-about label {
@@ -39,8 +54,8 @@
 .manage-about textarea:focus,
 .manage-about input:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 /* === BUTONLAR === */
@@ -64,13 +79,12 @@
 
 /* Güncelle */
 .actions .save {
-  background: #2563eb;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   color: white;
 }
 
 .actions .save:hover {
-  background: #1e40af;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
   transform: translateY(-1px);
 }
 

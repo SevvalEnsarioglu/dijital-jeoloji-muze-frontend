@@ -1,0 +1,45 @@
+.eserler-page {
+    background: var(--bg);
+    min-height: calc(100vh - 160px);
+    padding: 20px;
+}
+
+.eserler-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.eserler-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.eserler-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.loading-text {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text);
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .eserler-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eserler-page {
+        padding: 15px;
+    }
+
+    .eserler-title {
+        font-size: 28px;
+    }
+}

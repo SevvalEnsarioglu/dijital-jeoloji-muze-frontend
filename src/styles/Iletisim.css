@@ -1,6 +1,6 @@
 .contact-page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #FEFCF8 0%, #FFFBF5 100%);
+  background: var(--bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,10 +10,11 @@
 .contact-container {
   width: 100%;
   max-width: 800px;
-  background: white;
+  background: var(--surface);
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border: 1px solid var(--border);
 }
 
 .contact-container h1 {
@@ -21,12 +22,14 @@
   margin-bottom: 10px;
   font-size: 32px;
   font-weight: 700;
+  color: var(--text);
 }
 
 .contact-container p {
   text-align: center;
   margin-bottom: 30px;
-  color: #555;
+  color: var(--text);
+  opacity: 0.8;
   line-height: 1.6;
 }
 
@@ -49,15 +52,18 @@
 .contact-form textarea {
   padding: 14px 16px;
   border-radius: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
   font-size: 16px;
-  transition: border 0.2s ease;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: #f5b942;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-primary) 20%, transparent);
 }
 
 .contact-form textarea {
@@ -68,18 +74,19 @@
   align-self: center;
   margin-top: 10px;
   padding: 14px 36px;
-  background-color: #f5b942;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: #1a1510;
   border: none;
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact-form button:hover {
-  background-color: #e0a832;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-primary) 40%, transparent);
 }
 
 /* Responsive */

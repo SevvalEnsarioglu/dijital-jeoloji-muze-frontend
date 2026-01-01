@@ -33,54 +33,58 @@ export default function ManageContact() {
 
   return (
     <div className="manage-contact">
+      <div className="header">
+        <h1>İletişim Mesajları Yönetimi</h1>
+      </div>
+
       {/* TABLO */}
-        <table className="contact-table">
-            <thead>
-                <tr>
-                <th>Tarih</th>
-                <th>Konu</th>
-                <th>Ad</th>
-                <th>Soyad</th>
-                <th>Email</th>
-                <th>Telefon</th>
-                <th>Mesaj</th>
-                <th>Okundu</th>
-                </tr>
-            </thead>
+      <table className="contact-table">
+        <thead>
+          <tr>
+            <th>Tarih</th>
+            <th>Konu</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Mesaj</th>
+            <th>Okundu</th>
+          </tr>
+        </thead>
 
-            <tbody>
-                {mesajlar.map((m) => (
-                <tr key={m.id} onClick={() => setSelected(m)}>
-                    <td>{new Date(m.createdAt).toLocaleDateString()}</td>
-                    <td>{m.konu}</td>
-                    <td>{m.ad}</td>
-                    <td>{m.soyad}</td>
-                    <td>{m.email}</td>
-                    <td>{m.telefon}</td>
+        <tbody>
+          {mesajlar.map((m) => (
+            <tr key={m.id} onClick={() => setSelected(m)}>
+              <td>{new Date(m.createdAt).toLocaleDateString()}</td>
+              <td>{m.konu}</td>
+              <td>{m.ad}</td>
+              <td>{m.soyad}</td>
+              <td>{m.email}</td>
+              <td>{m.telefon}</td>
 
-                    {/* MESAJ ÖNİZLEME */}
-                    <td>
-                    {m.mesajiniz?.length > 25
-                        ? m.mesajiniz.substring(0, 25) + "..."
-                        : m.mesajiniz}
-                    </td>
-                    {/* OKUNDU DURUMU */}
-                    <td
-                    onClick={(e) => {
-                        e.stopPropagation(); 
-                        toggleOkundu(m.id, m.okundu);
-                    }}
-                    style={{ cursor: "pointer", fontWeight: "bold" }}
-                    >
-                    <span className={m.okundu ? "okundu" : "okunmadi"}>
-                        {m.okundu ? "Okundu" : "Okunmadı"}
-                    </span>
-                    </td>
+              {/* MESAJ ÖNİZLEME */}
+              <td>
+                {m.mesajiniz?.length > 25
+                  ? m.mesajiniz.substring(0, 25) + "..."
+                  : m.mesajiniz}
+              </td>
+              {/* OKUNDU DURUMU */}
+              <td
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleOkundu(m.id, m.okundu);
+                }}
+                style={{ cursor: "pointer", fontWeight: "bold" }}
+              >
+                <span className={m.okundu ? "okundu" : "okunmadi"}>
+                  {m.okundu ? "Okundu" : "Okunmadı"}
+                </span>
+              </td>
 
-                </tr>
-                ))}
-            </tbody>
-        </table>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
 
       {/* MODAL */}

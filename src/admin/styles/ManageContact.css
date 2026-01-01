@@ -1,85 +1,155 @@
 .manage-contact {
-  padding: 20px;
+  padding: 24px;
+  max-width: min(1400px, 100vw);
+  margin: 0 auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
-.admin-topbar {
-  background: #1e293b;
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+/* === HEADER === */
+.manage-contact .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.manage-contact h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
 }
 
 .contact-table {
   width: 100%;
   border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .contact-table th,
 .contact-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.contact-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
 }
 
 .contact-table tr {
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-.contact-table tr:hover {
-  background-color: #f5f5f5;
+.contact-table tbody tr:hover {
+  background-color: #f3f4f6;
 }
 
 .okundu {
-  color: green;
-  font-weight: bold;
+  color: #059669;
+  font-weight: 600;
 }
 
 .okunmadi {
-  color: red;
-  font-weight: bold;
+  color: #dc2626;
+  font-weight: 600;
 }
 
 /* MODAL */
 .modal-overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
 .modal {
   background: white;
-  padding: 25px;
-  width: 420px;
-  border-radius: 10px;
+  padding: 28px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 20px 0;
+}
+
+.modal p {
+  margin: 8px 0;
+  color: #374151;
 }
 
 .message-box {
   background: #f9fafb;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  color: #1f2937;
+  line-height: 1.6;
 }
 
 .modal-actions {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .modal-actions button {
-  padding: 6px 12px;
+  padding: 11px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .modal-actions .toggle {
-  background: #2563eb;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   color: white;
 }
 
+.modal-actions .toggle:hover {
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+  transform: translateY(-1px);
+}
+
 .modal-actions .delete {
-  background: #dc2626;
-  color: white;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.modal-actions .delete:hover {
+  background: #fecaca;
+  transform: translateY(-1px);
+}
+
+.modal-actions button:not(.toggle):not(.delete) {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.modal-actions button:not(.toggle):not(.delete):hover {
+  background: #e5e7eb;
 }
