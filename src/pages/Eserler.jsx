@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import EserCard from "../components/EserCard";
+import { getAllEser } from "../services/eserService";
 import "../styles/Eserler.css";
 
 const Eserler = () => {
     const [eserler, setEserler] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // SAYFA AÇILDIĞINDA ÇALIŞACAK
     useEffect(() => {
-        setLoading(true);
-
-        // TODO: Backend hazır olunca aşağıdaki kod aktif edilecek
-        // getEserler().then((data) => setEserler(data));
-
-        setLoading(false);
+        loadEserler();
     }, []);
+
+    const loadEserler = async () => {
+        try {
+            setLoading(true);
+            const data = await getAllEser();
+            setEserler(data);
+        } catch (error) {
+            console.error("Eserler yüklenirken hata:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     if (loading) {
         return <div className="loading-text">Yükleniyor...</div>;
@@ -25,16 +32,12 @@ const Eserler = () => {
             <div className="eserler-container">
                 <h1 className="eserler-title">Eserler</h1>
 
-                {/* GRID ALANI */}
                 <div className="eserler-grid">
-                    {/* TODO: Backend'den gelecek veriler burada map'lenecek */}
-                    {/* eserler.map((eser) => <EserCard key={eser.id} eser={eser} />) */}
-
-                    {/* Şimdilik örnek kart iskeleti */}
-                    <EserCard />
-                    <EserCard />
-                    <EserCard />
-                    <EserCard />
+                    {eserler.length === 0 ? (
+                        <p className="no-data">Henüz eser bulunmamaktadır.</p>
+                    ) : (
+                        eserler.map((eser) => <EserCard key={eser.id} eser={eser} />)
+                    )}
                 </div>
             </div>
         </div>

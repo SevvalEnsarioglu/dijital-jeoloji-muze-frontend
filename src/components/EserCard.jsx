@@ -1,39 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/EserCard.css";
+import "../styles/EserDetay.css";
 
 const EserCard = ({ eser }) => {
-    // Eğer backend'den veri gelmezse boş skeleton göstermek için kontrol
-    const isSkeleton = !eser;
+    if (!eser) return null;
 
     return (
-        <Link
-            to={isSkeleton ? "#" : `/eser/${eser.id}`}
-            className="eser-card-link"
-        >
-            <div className={`eser-card ${isSkeleton ? "skeleton" : ""}`}>
+        <Link to={`/eser/${eser.id}`} className="eser-card-link">
+            <div className="eser-card">
                 {/* GÖRSEL ALANI */}
                 <div className="eser-card-image">
-                    {/* TODO: Görsel burada gösterilecek */}
-                    {/* <img src={eser.image} alt={eser.name} /> */}
+                    {eser.foto ? (
+                        <img src={eser.foto} alt={eser.isim} />
+                    ) : (
+                        <div className="no-image">Fotoğraf Yok</div>
+                    )}
                 </div>
 
                 {/* BAŞLIK */}
-                <h3 className="eser-card-title">
-                    {isSkeleton ? "Eser Adı (TODO)" : eser.name}
-                </h3>
+                <h3 className="eser-card-title">{eser.isim}</h3>
 
-                {/* KISA AÇIKLAMA */}
+                {/* DÖNEM */}
                 <p className="eser-card-description">
-                    {isSkeleton ? "Açıklama alanı (TODO)" : eser.shortDescription}
+                    {eser.donem || "Dönem bilgisi yok"}
                 </p>
 
                 {/* DETAYA GİT LİNKİ */}
-                {!isSkeleton && (
-                    <div className="eser-card-link-text">
-                        → Detayları Gör
-                    </div>
-                )}
+                <div className="eser-card-link-text">→ Detayları Gör</div>
             </div>
         </Link>
     );

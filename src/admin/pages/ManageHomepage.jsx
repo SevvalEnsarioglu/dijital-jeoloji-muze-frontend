@@ -128,7 +128,7 @@ export default function ManageHomepage() {
             <div className="header">
                 <h1>Ana Sayfa Yönetimi</h1>
                 <button className="add-btn" onClick={handleAddNew}>
-                    + Yeni Component Ekle
+                    + Yeni Bileşen Ekle
                 </button>
             </div>
 

@@ -1,17 +1,14 @@
 .manage-about {
-  padding: 24px;
-  max-width: min(1200px, 100vw);
+  padding: 32px;
+  max-width: min(1400px, 95vw);
   margin: 0 auto;
-  overflow-x: hidden;
+  min-height: calc(100vh - 80px);
   box-sizing: border-box;
 }
 
 /* === HEADER === */
 .manage-about .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .manage-about h1 {
@@ -21,74 +18,104 @@
   margin: 0;
 }
 
+/* === CARD === */
 .about-card {
   background: white;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  /* Softer, deeper shadow */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Glass feel */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top gradient accent */
+.about-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
 }
 
 .manage-about label {
   display: block;
-  margin-top: 20px;
-  margin-bottom: 8px;
+  margin-top: 24px;
+  margin-bottom: 10px;
   font-weight: 600;
+  font-size: 15px;
   color: #374151;
+  letter-spacing: 0.3px;
 }
 
 .manage-about textarea,
 .manage-about input {
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
   font-size: 15px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #111827;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
 }
 
 .manage-about textarea {
-  min-height: 200px;
+  min-height: 250px;
   resize: vertical;
+  line-height: 1.6;
 }
 
 .manage-about textarea:focus,
 .manage-about input:focus {
   outline: none;
   border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
-/* === BUTONLAR === */
-
+/* === BUTTONS === */
 .actions {
-  margin-top: 32px;
+  margin-top: 40px;
   display: flex;
   justify-content: flex-end;
-  gap: 14px;
+  gap: 16px;
+  align-items: center;
 }
 
 .actions button {
-  padding: 12px 22px;
-  border-radius: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
   border: none;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.3px;
 }
 
-/* Güncelle */
+/* Güncelle - Green (Matching user pref) */
 .actions .save {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
+  box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
 }
 
 .actions .save:hover {
-  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 15px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Sil */
+.actions .save:active {
+  transform: translateY(0);
+}
+
+/* Sil - Red */
 .actions .delete {
   background: #fee2e2;
   color: #991b1b;
@@ -96,6 +123,22 @@
 
 .actions .delete:hover {
   background: #fecaca;
-  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.25);
-  transform: translateY(-1px);
+  color: #7f1d1d;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+  transform: translateY(-2px);
+}
+
+.actions .delete:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .manage-about {
+    padding: 20px;
+  }
+
+  .about-card {
+    padding: 24px;
+  }
 }
