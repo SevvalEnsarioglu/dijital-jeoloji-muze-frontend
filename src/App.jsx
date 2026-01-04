@@ -16,6 +16,7 @@ import ManageVisitingHours from "./admin/pages/ManageVisitingHours";
 import AdminRoute from "./admin/AdminRoute";
 import AdminLayout from "./admin/components/AdminLayout";
 import ManageContact from "./admin/pages/ManageContact";
+import ManageArtifacts from "./admin/pages/ManageArtifacts";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 // QR sadece admin dışında çalışsın
 function QrIfNotHome() {
@@ -86,6 +87,16 @@ function App() {
                         element={
                             <AdminLayout>
                                 <ManageHomepage />
+                            </AdminLayout>
+                        }
+                    />
+
+                    {/* Admin eserler */}
+                    <Route
+                        path="/admin/eserler"
+                        element={
+                            <AdminLayout>
+                                <ManageArtifacts />
                             </AdminLayout>
                         }
                     />

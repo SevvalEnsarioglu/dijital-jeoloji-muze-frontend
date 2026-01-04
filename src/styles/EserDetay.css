@@ -1,3 +1,73 @@
+/* === ESER CARD (Liste Görünümü) === */
+.eser-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.eser-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.eser-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.eser-card.skeleton {
+    cursor: default;
+}
+
+.eser-card-image {
+    width: 100%;
+    height: 160px;
+    background-color: var(--surface-2);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eser-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.eser-card-image .no-image {
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.eser-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+}
+
+.eser-card-description {
+    color: var(--text);
+    opacity: 0.7;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.eser-card-link-text {
+    margin-top: 10px;
+    color: var(--link);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* === ESER DETAY (Detay Sayfası) === */
 .eser-detay-page {
     background: var(--bg);
     min-height: calc(100vh - 160px);
@@ -16,12 +86,20 @@
     border-radius: 10px;
     margin-bottom: 20px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .eser-detay-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.eser-detay-image .no-image {
+    color: #9ca3af;
+    font-size: 16px;
 }
 
 .eser-detay-title {
@@ -38,11 +116,41 @@
     margin-bottom: 20px;
 }
 
+.eser-detay-info {
+    font-size: 15px;
+    color: var(--text);
+    margin: 8px 0;
+    opacity: 0.85;
+}
+
+.eser-detay-audio {
+    margin: 20px 0;
+}
+
+.eser-detay-audio h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.eser-detay-audio audio {
+    width: 100%;
+    max-width: 500px;
+}
+
 .eser-detay-description {
     font-size: 16px;
     line-height: 1.6;
     color: var(--text);
     opacity: 0.9;
+    margin: 20px 0;
+}
+
+.eser-detay-views {
+    font-size: 14px;
+    color: var(--text);
+    opacity: 0.6;
+    margin: 10px 0 30px 0;
 }
 
 .loading-text {
@@ -50,6 +158,200 @@
     margin-top: 40px;
     color: var(--text);
     font-size: 16px;
+}
+
+/* === YORUMLAR BÖLÜMÜ === */
+.yorumlar-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid var(--border);
+}
+
+.yorumlar-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 30px;
+}
+
+/* YORUM FORMU */
+.yorum-form-container {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.yorum-form-container h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.yorum-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--link);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* RATING SELECTOR */
+.rating-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 4px;
+    opacity: 0.3;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.star-btn.active {
+    opacity: 1;
+}
+
+.star-btn:hover {
+    transform: scale(1.1);
+}
+
+.rating-text {
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* SUBMIT BUTTON */
+.submit-yorum-btn {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    align-self: flex-start;
+}
+
+.submit-yorum-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.submit-yorum-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* YORUMLAR LİSTESİ */
+.yorumlar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.no-yorumlar {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text);
+    opacity: 0.6;
+    font-size: 16px;
+}
+
+.yorum-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+}
+
+.yorum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.yorum-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.yorum-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.yorum-date {
+    font-size: 13px;
+    color: var(--text);
+    opacity: 0.6;
+}
+
+.yorum-rating {
+    font-size: 16px;
+}
+
+.yorum-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.9;
+    margin: 0;
 }
 
 /* Responsive */
@@ -72,5 +374,17 @@
 
     .eser-detay-description {
         font-size: 15px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .yorum-form-container {
+        padding: 16px;
+    }
+
+    .submit-yorum-btn {
+        width: 100%;
     }
 }
