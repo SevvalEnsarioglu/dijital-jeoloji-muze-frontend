@@ -217,6 +217,24 @@ export default function ManageArtifacts() {
         }
     };
 
+    const handleDownloadQR = async (qrUrl, eserIsim) => {
+        try {
+            const response = await fetch(qrUrl);
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `QR_${eserIsim.replace(/[^\p{L}\p{N}]/gu, '_')}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Hata:", error);
+            alert("QR kod indirilirken hata oluştu!");
+        }
+    };
+
     if (loading) return <p className="loading">Yükleniyor...</p>;
 
     return (
@@ -450,6 +468,27 @@ export default function ManageArtifacts() {
                                 placeholder="Eser açıklaması"
                                 rows="5"
                             />
+
+                            {/* QR Code Section */}
+                            {selectedEser.qrFoto && (
+                                <div className="qr-section">
+                                    <label>QR Kod</label>
+                                    <div className="qr-container">
+                                        <img
+                                            src={selectedEser.qrFoto}
+                                            alt={`${selectedEser.isim} QR Kod`}
+                                            className="qr-image"
+                                        />
+                                        <button
+                                            className="download-qr-btn"
+                                            onClick={() => handleDownloadQR(selectedEser.qrFoto, selectedEser.isim)}
+                                            type="button"
+                                        >
+                                            QR Kodu İndir
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
 
                             <div className="modal-actions">
                                 <button className="comments-btn" onClick={() => {
