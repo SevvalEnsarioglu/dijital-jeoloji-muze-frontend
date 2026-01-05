@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Anasayfa.css";
 import { getAllAnasayfa } from "../services/publicAnasayfaService";
+import QrScannerModal from "../components/QrScannerModal";
 
 const Anasayfa = () => {
   const [components, setComponents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showScanner, setShowScanner] = useState(false);
 
   useEffect(() => {
     loadComponents();
@@ -31,44 +33,48 @@ const Anasayfa = () => {
   }
 
   return (
-    <div className="anasayfa-container">
-      <section className="welcome-section">
-        <h1>Ankara Üniversitesi YEBİM Dijital Müzesine Hoş Geldiniz</h1>
-        <button className="qr-button">QR OKUT</button>
-      </section>
+    <>
+      <div className="anasayfa-container">
+        <section className="welcome-section">
+          <h1>Ankara Üniversitesi YEBİM Dijital Müzesine Hoş Geldiniz</h1>
+          <button className="qr-button" onClick={() => setShowScanner(true)}>QR OKUT</button>
+        </section>
 
-      <section className="museum-section">
-        {components.map((component, index) => (
-          <div
-            key={component.id}
-            className={`museum-item ${index % 2 === 1 ? "reverse" : ""}`}
-          >
-            {index % 2 === 0 && component.fotoData && (
-              <img
-                src={component.fotoData}
-                alt={component.baslik || "Müze"}
-                className="museum-img"
-              />
-            )}
-            <div className="museum-text-content">
-              {component.baslik && (
-                <h2 className="museum-title">{component.baslik}</h2>
+        <section className="museum-section">
+          {components.map((component, index) => (
+            <div
+              key={component.id}
+              className={`museum-item ${index % 2 === 1 ? "reverse" : ""}`}
+            >
+              {index % 2 === 0 && component.fotoData && (
+                <img
+                  src={component.fotoData}
+                  alt={component.baslik || "Müze"}
+                  className="museum-img"
+                />
               )}
-              {component.aciklama && (
-                <p className="museum-text">{component.aciklama}</p>
+              <div className="museum-text-content">
+                {component.baslik && (
+                  <h2 className="museum-title">{component.baslik}</h2>
+                )}
+                {component.aciklama && (
+                  <p className="museum-text">{component.aciklama}</p>
+                )}
+              </div>
+              {index % 2 === 1 && component.fotoData && (
+                <img
+                  src={component.fotoData}
+                  alt={component.baslik || "Müze"}
+                  className="museum-img"
+                />
               )}
             </div>
-            {index % 2 === 1 && component.fotoData && (
-              <img
-                src={component.fotoData}
-                alt={component.baslik || "Müze"}
-                className="museum-img"
-              />
-            )}
-          </div>
-        ))}
-      </section>
-    </div>
+          ))}
+        </section>
+      </div>
+
+      <QrScannerModal isOpen={showScanner} onClose={() => setShowScanner(false)} />
+    </>
   );
 };
 

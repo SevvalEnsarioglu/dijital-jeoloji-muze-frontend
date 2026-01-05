@@ -1,6 +1,7 @@
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
-const API_URL = "http://localhost:8080/api/hakkimizda";
+const API_URL = `${API_BASE_URL}/api/hakkimizda`;
 
 // GET – Hakkımızda metnini getir
 export const getHakkimizda = async () => {

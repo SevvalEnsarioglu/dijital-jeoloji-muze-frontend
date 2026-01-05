@@ -1,7 +1,8 @@
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
-const API_URL = "http://localhost:8080/api/eser";
-const YORUM_API_URL = "http://localhost:8080/api/eser-yorum";
+const API_URL = `${API_BASE_URL}/api/eser`;
+const YORUM_API_URL = `${API_BASE_URL}/api/eser-yorum`;
 
 export const getAllEser = async () => {
     const response = await axios.get(API_URL);
