@@ -1,7 +1,7 @@
-import axios from "axios";
-import { API_BASE_URL } from "../../config/api";
+import { adminAxios, publicAxios } from "../../config/axiosConfig";
 
-const API_URL = `${API_BASE_URL}/api/ziyaret-saatleri`;
+const ADMIN_API_URL = `/api/admin/ziyaret-saatleri`;
+const PUBLIC_API_URL = `/api/ziyaret-saatleri`;
 
 
 // GET – Tüm ziyaret saatlerini getir (Public API)

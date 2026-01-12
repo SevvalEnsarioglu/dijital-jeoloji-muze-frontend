@@ -1,5 +1,5 @@
-import axios from "axios";
-import { API_BASE_URL } from "../../config/api";
+import { adminAxios, publicAxios } from "../../config/axiosConfig";
+
 const ADMIN_API_URL = `/api/admin/eser`;
 const PUBLIC_API_URL = `/api/eser`;
 const YORUM_API_URL = `/api/eser-yorum`;
