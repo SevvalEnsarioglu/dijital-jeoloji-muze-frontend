@@ -49,7 +49,7 @@ export default function Dashboard() {
                     <path d="M9 22V12H15V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             ),
-            path: "/admin/manage-homepage",
+            path: "/admin/anasayfa",
             color: "#a78bfa"
         },
         {
@@ -62,7 +62,7 @@ export default function Dashboard() {
                     <path d="M21 15L16 10L5 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             ),
-            path: "/admin/manage-artifacts",
+            path: "/admin/eserler",
             color: "#8b5cf6"
         },
         {
@@ -75,7 +75,7 @@ export default function Dashboard() {
                     <path d="M12 8H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             ),
-            path: "/admin/manage-about",
+            path: "/admin/hakkimizda",
             color: "#7c3aed"
         },
         {
@@ -87,7 +87,7 @@ export default function Dashboard() {
                     <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             ),
-            path: "/admin/manage-visiting-hours",
+            path: "/admin/ziyaretsaatleri",
             color: "#6d28d9"
         },
         {
@@ -98,7 +98,7 @@ export default function Dashboard() {
                     <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             ),
-            path: "/admin/manage-contact",
+            path: "/admin/iletisim",
             color: "#5b21b6"
         }
     ];

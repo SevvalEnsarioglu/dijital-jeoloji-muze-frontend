@@ -19,11 +19,11 @@ export default function AdminTopBar() {
 
       <nav className="admin-topbar-center">
         <NavLink to="/admin/dashboard">Dashboard</NavLink>
-        <NavLink to="/admin/manage-homepage">Ana Sayfa</NavLink>
-        <NavLink to="/admin/manage-artifacts">Eserler</NavLink>
-        <NavLink to="/admin/manage-about">Hakkımızda</NavLink>
-        <NavLink to="/admin/manage-visiting-hours">Ziyaret Saatleri</NavLink>
-        <NavLink to="/admin/manage-contact">İletişim</NavLink>
+        <NavLink to="/admin/anasayfa">Ana Sayfa</NavLink>
+        <NavLink to="/admin/eserler">Eserler</NavLink>
+        <NavLink to="/admin/hakkimizda">Hakkımızda</NavLink>
+        <NavLink to="/admin/ziyaretsaatleri">Ziyaret Saatleri</NavLink>
+        <NavLink to="/admin/iletisim">İletişim</NavLink>
       </nav>
 
       <div className="admin-topbar-right">

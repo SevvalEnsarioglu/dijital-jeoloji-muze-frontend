@@ -6,7 +6,7 @@ const EserCard = ({ eser }) => {
     if (!eser) return null;
 
     return (
-        <Link to={`/eser/${eser.id}`} className="eser-card-link">
+        <Link to={`/eserler/${eser.id}`} className="eser-card-link">
             <div className="eser-card">
                 {/* GÖRSEL ALANI */}
                 <div className="eser-card-image">
