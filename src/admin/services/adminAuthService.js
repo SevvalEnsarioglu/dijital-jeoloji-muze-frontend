@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_BASE_URL } from '../../config/api';
 
-const AUTH_API_URL = `${API_BASE_URL}/api/admin/adminauth`;
+const AUTH_API_URL = `${API_BASE_URL}/api/adminauth`;
 
 /**
  * Admin login - Backend'e kullanıcı adı ve şifre gönderir, JWT token alır
