@@ -83,7 +83,7 @@ function App() {
 
                     {/* Admin ana sayfa */}
                     <Route
-                        path="/admin/manage-homepage"
+                        path="/admin/anasayfa"
                         element={
                             <AdminRoute>
                                 <AdminLayout>
@@ -95,7 +95,7 @@ function App() {
 
                     {/* Admin eserler */}
                     <Route
-                        path="/admin/manage-artifacts"
+                        path="/admin/eserler"
                         element={
                             <AdminRoute>
                                 <AdminLayout>
@@ -107,7 +107,7 @@ function App() {
 
                     {/* Admin hakkımızda */}
                     <Route
-                        path="/admin/manage-about"
+                        path="/admin/hakkimizda"
                         element={
                             <AdminRoute>
                                 <AdminLayout>
@@ -119,7 +119,7 @@ function App() {
 
                     {/* Admin iletişim */}
                     <Route
-                        path="/admin/manage-contact"
+                        path="/admin/iletisim"
                         element={
                             <AdminRoute>
                                 <AdminLayout>
@@ -131,7 +131,7 @@ function App() {
 
                     {/* Admin ziyaret saatleri */}
                     <Route
-                        path="/admin/manage-visiting-hours"
+                        path="/admin/ziyaretsaatleri"
                         element={
                             <AdminRoute>
                                 <AdminLayout>

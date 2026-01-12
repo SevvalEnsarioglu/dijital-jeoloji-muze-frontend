@@ -3,6 +3,7 @@ import { adminAxios, publicAxios } from "../../config/axiosConfig";
 const ADMIN_API_URL = `/api/admin/eser`;
 const PUBLIC_API_URL = `/api/eser`;
 const YORUM_API_URL = `/api/eser-yorum`;
+const ADMIN_YORUM_API_URL = `/api/admin/eser-yorum`;
 
 // GET - Tüm eserleri getir (Public API)
 export const getAllEser = async () => {
@@ -52,12 +53,12 @@ export const getYorumByEserId = async (eserID) => {
 
 // DELETE - Yorumu sil - ADMIN
 export const deleteEserYorum = async (id) => {
-    const response = await adminAxios.delete(`${YORUM_API_URL}/${id}`);
+    const response = await adminAxios.delete(`${ADMIN_YORUM_API_URL}/${id}`);
     return response.data;
 };
 
 // PATCH - Yorum okundu durumunu güncelle - ADMIN
 export const updateOkunduDurumu = async (id, okundu) => {
-    const response = await adminAxios.patch(`${YORUM_API_URL}/${id}/okundu`, { okundu });
+    const response = await adminAxios.patch(`${ADMIN_YORUM_API_URL}/${id}/okundu`, { okundu });
     return response.data;
 };
