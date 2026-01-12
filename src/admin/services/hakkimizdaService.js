@@ -1,7 +1,7 @@
-import { adminAxios, publicAxios } from "../../config/axiosConfig";
+import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
-const ADMIN_API_URL = `/api/admin/hakkimizda`;
-const PUBLIC_API_URL = `/api/hakkimizda`;
+const API_URL = `${API_BASE_URL}/api/hakkimizda`;
 
 
 // GET – Hakkımızda metnini getir (Public API)
