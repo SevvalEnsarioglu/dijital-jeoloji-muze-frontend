@@ -11,7 +11,11 @@ const EserCard = ({ eser }) => {
                 {/* GÖRSEL ALANI */}
                 <div className="eser-card-image">
                     {eser.foto ? (
-                        <img src={eser.foto} alt={eser.isim} />
+                        <img
+                            src={eser.foto}
+                            alt={eser.isim}
+
+                        />
                     ) : (
                         <div className="no-image">Fotoğraf Yok</div>
                     )}
@@ -20,9 +24,13 @@ const EserCard = ({ eser }) => {
                 {/* BAŞLIK */}
                 <h3 className="eser-card-title">{eser.isim}</h3>
 
-                {/* DÖNEM */}
+                {/* AÇIKLAMA ÖNİZLEMESİ */}
                 <p className="eser-card-description">
-                    {eser.donem || "Dönem bilgisi yok"}
+                    {eser.aciklama
+                        ? (eser.aciklama.length > 80
+                            ? eser.aciklama.substring(0, 80) + "..."
+                            : eser.aciklama)
+                        : "Açıklama bilgisi yok"}
                 </p>
 
                 {/* DETAYA GİT LİNKİ */}
