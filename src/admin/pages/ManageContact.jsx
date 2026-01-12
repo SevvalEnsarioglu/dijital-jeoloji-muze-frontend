@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
-  getAllIletisimMesajlari,
-  updateOkunduDurumu,
-  deleteIletisimMesaji
-} from "../../services/publicIletisimService";
+  getAllMessages,
+  markAsRead,
+  deleteMessage
+} from "../services/iletisimService";
 import "../styles/ManageContact.css";
 
 export default function ManageContact() {
@@ -15,18 +15,18 @@ export default function ManageContact() {
   }, []);
 
   const fetchMesajlar = async () => {
-    const data = await getAllIletisimMesajlari();
+    const data = await getAllMessages();
     setMesajlar(data);
   };
 
   const toggleOkundu = async (id, current) => {
-    await updateOkunduDurumu(id, !current);
+    await markAsRead(id, !current);
     fetchMesajlar();
   };
 
   const deleteMesaj = async (id) => {
     if (!window.confirm("Mesaj silinsin mi?")) return;
-    await deleteIletisimMesaji(id);
+    await deleteMessage(id);
     setSelected(null);
     fetchMesajlar();
   };

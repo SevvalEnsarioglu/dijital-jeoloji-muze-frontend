@@ -1,0 +1,530 @@
+/* ============================================
+   ADMIN DASHBOARD PAGE STYLES - KOYU LACİVERT TEMA
+   ============================================ */
+
+.dashboard-page {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--bg);
+    position: relative;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    padding: 40px 20px;
+}
+
+/* Animated Background */
+.dashboard-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.dashboard-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.05;
+    animation: dashboardFloat 25s infinite ease-in-out;
+}
+
+.dashboard-shape.shape-1 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #1e40af, #1e3a8a);
+    top: -150px;
+    right: -150px;
+    animation-delay: 0s;
+}
+
+.dashboard-shape.shape-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #1e3a8a, #1e293b);
+    bottom: -100px;
+    left: -100px;
+    animation-delay: 8s;
+}
+
+@keyframes dashboardFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Welcome Section */
+.dashboard-welcome {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    animation: fadeInDown 0.6s ease-out;
+    transition: all 0.3s ease;
+}
+
+.dashboard-welcome:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-content {
+    flex: 1;
+}
+
+.welcome-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.username-highlight {
+    background: linear-gradient(135deg, #cba939ff, #d8a218);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.welcome-subtitle {
+    font-size: 16px;
+    color: color-mix(in srgb, var(--text) 70%, transparent);
+    margin: 0;
+}
+
+.welcome-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.time-display {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -1px;
+}
+
+.date-display {
+    font-size: 14px;
+    color: color-mix(in srgb, var(--text) 60%, transparent);
+    text-align: right;
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, #1e40af 30%, var(--border));
+}
+
+.stat-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--text) 70%, transparent);
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Dashboard Section */
+.dashboard-section {
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 24px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #a78bfa, #8b5cf6);
+}
+
+/* Quick Actions Grid */
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.action-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: cardFadeIn 0.5s ease-out forwards;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #a78bfa, #8b5cf6);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: bottom;
+}
+
+.action-card:hover::before {
+    transform: scaleY(1);
+    transform-origin: top;
+}
+
+.action-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateX(8px);
+    border-color: color-mix(in srgb, #a78bfa 30%, var(--border));
+}
+
+.action-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: color-mix(in srgb, currentColor 10%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.action-card:hover .action-icon {
+    transform: scale(1.1) rotate(-5deg);
+    background: color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.action-content {
+    flex: 1;
+}
+
+.action-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 4px 0;
+    transition: color 0.3s ease;
+}
+
+.action-card:hover .action-title {
+    color: #a78bfa;
+}
+
+.action-description {
+    font-size: 13px;
+    color: color-mix(in srgb, var(--text) 65%, transparent);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.action-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: color-mix(in srgb, #a78bfa 10%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a78bfa;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.action-card:hover .action-arrow {
+    background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .quick-actions-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-page {
+        padding: 24px 16px;
+    }
+
+    .dashboard-container {
+        gap: 24px;
+    }
+
+    .dashboard-welcome {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 24px;
+    }
+
+    .welcome-title {
+        font-size: 26px;
+    }
+
+    .welcome-time {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .time-display {
+        font-size: 32px;
+    }
+
+    .date-display {
+        text-align: left;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .stat-value {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .action-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-page {
+        padding: 20px 12px;
+    }
+
+    .dashboard-welcome {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .welcome-title {
+        font-size: 22px;
+    }
+
+    .welcome-subtitle {
+        font-size: 14px;
+    }
+
+    .time-display {
+        font-size: 28px;
+    }
+
+    .date-display {
+        font-size: 13px;
+    }
+
+    .stat-card {
+        padding: 18px;
+        gap: 16px;
+    }
+
+    .stat-icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .stat-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .stat-label {
+        font-size: 13px;
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .action-card {
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .action-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .action-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .action-title {
+        font-size: 15px;
+    }
+
+    .action-description {
+        font-size: 12px;
+    }
+
+    .action-arrow {
+        width: 28px;
+        height: 28px;
+    }
+
+    .action-arrow svg {
+        width: 16px;
+        height: 16px;
+    }
+}

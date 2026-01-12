@@ -44,3 +44,48 @@
   border-bottom: 2px solid #fbbf24;
   padding-bottom: 4px;
 }
+
+/* Sağ taraf - Kullanıcı ve Logout */
+.admin-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-username {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fbbf24;
+  padding: 6px 12px;
+  background: rgba(251, 191, 36, 0.1);
+  border-radius: 6px;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #e26868;
+  border: 1px solid rgba(192, 53, 53, 0.3);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(250, 63, 63, 0.5);
+  transform: translateY(-1px);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.logout-btn svg {
+  stroke: currentColor;
+}
