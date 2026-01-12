@@ -17,7 +17,7 @@ import AdminRoute from "./admin/AdminRoute";
 import AdminLayout from "./admin/components/AdminLayout";
 import ManageContact from "./admin/pages/ManageContact";
 import ManageArtifacts from "./admin/pages/ManageArtifacts";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 // QR sadece admin dışında çalışsın
 function QrIfNotHome() {
     const location = useLocation();
@@ -83,56 +83,73 @@ function App() {
 
                     {/* Admin ana sayfa */}
                     <Route
-                        path="/admin/anasayfa"
+                        path="/admin/manage-homepage"
                         element={
-                            <AdminLayout>
-                                <ManageHomepage />
-                            </AdminLayout>
+                            <AdminRoute>
+                                <AdminLayout>
+                                    <ManageHomepage />
+                                </AdminLayout>
+                            </AdminRoute>
                         }
                     />
 
                     {/* Admin eserler */}
                     <Route
-                        path="/admin/eserler"
+                        path="/admin/manage-artifacts"
                         element={
-                            <AdminLayout>
-                                <ManageArtifacts />
-                            </AdminLayout>
+                            <AdminRoute>
+                                <AdminLayout>
+                                    <ManageArtifacts />
+                                </AdminLayout>
+                            </AdminRoute>
                         }
                     />
 
                     {/* Admin hakkımızda */}
                     <Route
-                        path="/admin/hakkimizda"
+                        path="/admin/manage-about"
                         element={
-                            <AdminLayout>
-                                <ManageAbout />
-                            </AdminLayout>
+                            <AdminRoute>
+                                <AdminLayout>
+                                    <ManageAbout />
+                                </AdminLayout>
+                            </AdminRoute>
                         }
                     />
 
                     {/* Admin iletişim */}
                     <Route
-                        path="/admin/iletisim"
+                        path="/admin/manage-contact"
                         element={
-                            <AdminLayout>
-                                <ManageContact />
-                            </AdminLayout>
+                            <AdminRoute>
+                                <AdminLayout>
+                                    <ManageContact />
+                                </AdminLayout>
+                            </AdminRoute>
                         }
                     />
 
                     {/* Admin ziyaret saatleri */}
                     <Route
-                        path="/admin/ziyaret-saatleri"
+                        path="/admin/manage-visiting-hours"
                         element={
-                            <AdminLayout>
-                                <ManageVisitingHours />
-                            </AdminLayout>
+                            <AdminRoute>
+                                <AdminLayout>
+                                    <ManageVisitingHours />
+                                </AdminLayout>
+                            </AdminRoute>
                         }
                     />
 
-
-
+                    {/* /admin root path'ini dashboard'a yönlendir (login varsa), yoksa AdminRoute zaten login'e yönlendirir */}
+                    <Route
+                        path="/admin"
+                        element={
+                            <AdminRoute>
+                                <Navigate to="/admin/dashboard" replace />
+                            </AdminRoute>
+                        }
+                    />
 
                 </Routes>
             </LayoutWrapper>

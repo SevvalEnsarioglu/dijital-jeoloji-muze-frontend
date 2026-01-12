@@ -1,27 +1,29 @@
-import axios from "axios";
+import { adminAxios, publicAxios } from "../../config/axiosConfig";
 
-const API_URL = "http://localhost:8080/api/ziyaret-saatleri";
+const ADMIN_API_URL = `/api/admin/ziyaret-saatleri`;
+const PUBLIC_API_URL = `/api/ziyaret-saatleri`;
 
-// GET – Tüm ziyaret saatlerini getir
+
+// GET – Tüm ziyaret saatlerini getir (Public API)
 export const getAllZiyaretSaatleri = async () => {
-    const response = await axios.get(API_URL);
+    const response = await publicAxios.get(PUBLIC_API_URL);
     return response.data;
 };
 
-// POST – Yeni ziyaret saati oluştur
+// POST – Yeni ziyaret saati oluştur - ADMIN
 export const createZiyaretSaatleri = async (data) => {
-    const response = await axios.post(API_URL, data);
+    const response = await adminAxios.post(ADMIN_API_URL, data);
     return response.data;
 };
 
-// PUT – Ziyaret saatini güncelle
+// PUT – Ziyaret saatini güncelle - ADMIN
 export const updateZiyaretSaatleri = async (id, data) => {
-    const response = await axios.put(`${API_URL}/${id}`, data);
+    const response = await adminAxios.put(`${ADMIN_API_URL}/${id}`, data);
     return response.data;
 };
 
-// DELETE – Ziyaret saatini sil
+// DELETE – Ziyaret saatini sil - ADMIN
 export const deleteZiyaretSaatleri = async (id) => {
-    const response = await axios.delete(`${API_URL}/${id}`);
+    const response = await adminAxios.delete(`${ADMIN_API_URL}/${id}`);
     return response.data;
 };
