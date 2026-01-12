@@ -1,70 +1,80 @@
-/* floating button */
+/* Floating QR Button - Modern Design */
 .qr-floating-btn {
   position: fixed;
-  right: 1.25rem;
-  bottom: 4.5rem; /* sağ altın biraz üstü */
+  right: 1.5rem;
+  bottom: 5rem;
   z-index: 9999;
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   border: none;
-  background-color: #ffffff;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  font-size: 22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition: transform 0.15s ease;
-}
-.qr-floating-btn:hover { transform: scale(1.05); }
-
-
-.qr-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.qr-backdrop {
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.45);
-}
-.qr-modal-content {
-  position: relative;
-  background: #fff;
-  border-radius: 12px;
-  padding: 12px;
-  width: 380px;
-  max-width: calc(100% - 24px);
-  z-index: 10001;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.28);
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: pulse 2s ease-in-out infinite;
 }
 
-/* close button */
-.qr-close {
+.qr-floating-btn::before {
+  content: '';
   position: absolute;
-  right: 8px;
-  top: 8px;
-  border: none;
-  background: transparent;
-  font-size: 18px;
-  cursor: pointer;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
 }
 
-/* action button */
-.qr-action {
-  margin-top: 8px;
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: none;
-  background: #2b6cb0;
-  color: white;
-  cursor: pointer;
+.qr-floating-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5),
+    0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.qr-floating-btn:hover::before {
+  opacity: 0.7;
+}
+
+.qr-floating-btn:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.qr-floating-btn img {
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.qr-floating-btn:hover img {
+  transform: rotate(15deg) scale(1.1);
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4),
+      0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  50% {
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.6),
+      0 4px 12px rgba(0, 0, 0, 0.2),
+      0 0 0 8px rgba(102, 126, 234, 0.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .qr-floating-btn {
+    width: 56px;
+    height: 56px;
+    right: 1rem;
+    bottom: 4.5rem;
+  }
 }

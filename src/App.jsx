@@ -63,7 +63,7 @@ function App() {
                     <Route path="/hakkimizda" element={<Hakkimizda />} />
                     <Route path="/iletisim" element={<Iletisim />} />
                     <Route path="/eserler" element={<Eserler />} />
-                    <Route path="/eser/:id" element={<EserDetay />} />
+                    <Route path="/eserler/:id" element={<EserDetay />} />
 
 
                     {/* Admin login (korumasız) */}
