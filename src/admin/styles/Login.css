@@ -183,21 +183,31 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
   transition: color 0.3s ease;
 }
 
-.form-label svg {
+/* Input Wrapper for Icon Inside Field */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 18px;
   height: 18px;
-  stroke: #1e40af;
+  stroke: color-mix(in srgb, var(--text) 50%, transparent);
+  pointer-events: none;
+  transition: stroke 0.3s ease;
+  z-index: 2;
 }
 
 .form-input {
   width: 100%;
-  padding: 14px 16px;
+  padding: 14px 16px 14px 48px !important;
   font-size: 15px;
   font-family: 'Poppins', sans-serif;
   color: var(--text);
@@ -206,6 +216,7 @@
   border-radius: 12px;
   transition: all 0.3s ease;
   outline: none;
+  box-sizing: border-box;
 }
 
 .form-input::placeholder {
@@ -220,6 +231,10 @@
   border-color: #1e40af;
   box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.15);
   background: var(--surface);
+}
+
+.input-wrapper:focus-within .input-icon {
+  stroke: #1e40af;
 }
 
 .form-input:disabled {
@@ -401,7 +416,7 @@
   }
 
   .form-input {
-    padding: 12px 14px;
+    padding: 12px 14px 12px 48px;
     font-size: 14px;
   }
 
@@ -455,7 +470,7 @@
   }
 
   .form-input {
-    padding: 11px 12px;
+    padding: 11px 12px 11px 48px;
     font-size: 14px;
   }
 
