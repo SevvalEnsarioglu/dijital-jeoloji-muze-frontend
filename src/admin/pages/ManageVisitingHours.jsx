@@ -5,9 +5,11 @@ import {
     updateZiyaretSaatleri,
     deleteZiyaretSaatleri,
 } from "../services/ziyaretSaatleriService";
+import { useToast } from "../../context/ToastContext";
 import "../styles/ManageVisitingHours.css";
 
 export default function ManageVisitingHours() {
+    const toast = useToast();
     const [saatler, setSaatler] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
@@ -66,32 +68,37 @@ export default function ManageVisitingHours() {
 
             if (selectedSaat) {
                 await updateZiyaretSaatleri(selectedSaat.id, payload);
-                alert("Güncellendi!");
+                toast.showSuccess("Güncellendi!");
             } else {
                 await createZiyaretSaatleri(payload);
-                alert("Eklendi!");
+                toast.showSuccess("Eklendi!");
             }
             setShowModal(false);
             loadSaatler();
         } catch (error) {
             console.error("Kaydetme hatası:", error);
-            alert("Bir hata oluştu!");
+            toast.showError("Bir hata oluştu!");
         }
     };
 
     const handleDelete = async () => {
         if (!selectedSaat) return;
-        if (!window.confirm("Bu kayıt silinsin mi?")) return;
 
-        try {
-            await deleteZiyaretSaatleri(selectedSaat.id);
-            alert("Silindi!");
-            setShowModal(false);
-            loadSaatler();
-        } catch (error) {
-            console.error("Silme hatası:", error);
-            alert("Bir hata oluştu!");
-        }
+        toast.confirm({
+            message: 'Bu kayıt silinsin mi?',
+            header: 'Kayıt Sil',
+            accept: async () => {
+                try {
+                    await deleteZiyaretSaatleri(selectedSaat.id);
+                    toast.showSuccess("Silindi!");
+                    setShowModal(false);
+                    loadSaatler();
+                } catch (error) {
+                    console.error("Silme hatası:", error);
+                    toast.showError("Bir hata oluştu!");
+                }
+            }
+        });
     };
 
     if (loading) return <p className="loading">Yükleniyor...</p>;

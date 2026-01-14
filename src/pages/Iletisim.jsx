@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../styles/Iletisim.css";
 import { createIletisimMesaji } from "../services/publicIletisimService";
+import { useToast } from "../context/ToastContext";
 
 export default function Iletisim() {
+  const toast = useToast();
   const [formData, setFormData] = useState({
     ad: "",
     soyad: "",
@@ -18,26 +20,26 @@ export default function Iletisim() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    await createIletisimMesaji(formData);
+    try {
+      await createIletisimMesaji(formData);
 
-    alert("Mesajınız başarıyla iletildi.");
+      toast.showSuccess("Mesajınız başarıyla iletildi.");
 
-    setFormData({
-      ad: "",
-      soyad: "",
-      email: "",
-      konu: "",
-      telefon: "",
-      mesajiniz: ""
-    });
-  } catch (error) {
-    console.error(error);
-    alert("Mesaj gönderilirken hata oluştu.");
-  }
-};
+      setFormData({
+        ad: "",
+        soyad: "",
+        email: "",
+        konu: "",
+        telefon: "",
+        mesajiniz: ""
+      });
+    } catch (error) {
+      console.error(error);
+      toast.showError("Mesaj gönderilirken hata oluştu.");
+    }
+  };
 
 
   return (

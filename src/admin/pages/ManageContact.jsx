@@ -4,9 +4,11 @@ import {
   markAsRead,
   deleteMessage
 } from "../services/iletisimService";
+import { useToast } from "../../context/ToastContext";
 import "../styles/ManageContact.css";
 
 export default function ManageContact() {
+  const toast = useToast();
   const [mesajlar, setMesajlar] = useState([]);
   const [selected, setSelected] = useState(null);
 
@@ -25,10 +27,15 @@ export default function ManageContact() {
   };
 
   const deleteMesaj = async (id) => {
-    if (!window.confirm("Mesaj silinsin mi?")) return;
-    await deleteMessage(id);
-    setSelected(null);
-    fetchMesajlar();
+    toast.confirm({
+      message: 'Mesaj silinsin mi?',
+      header: 'Mesaj Sil',
+      accept: async () => {
+        await deleteMessage(id);
+        setSelected(null);
+        fetchMesajlar();
+      }
+    });
   };
 
   return (
