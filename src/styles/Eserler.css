@@ -80,7 +80,7 @@
 .eserler-grid {
     display: grid;
     gap: 24px;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .loading-text {
@@ -92,11 +92,6 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .eserler-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-
     .eserler-page {
         padding: 15px;
     }
@@ -117,5 +112,19 @@
     .sort-dropdown {
         flex: 1;
         min-width: auto;
+    }
+}
+
+/* Mobile & Tablet specific styling */
+@media (max-width: 768px) {
+    .eserler-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .eserler-grid {
+        gap: 10px;
     }
 }

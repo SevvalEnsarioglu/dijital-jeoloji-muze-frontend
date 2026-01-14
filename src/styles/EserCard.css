@@ -77,3 +77,25 @@
     font-weight: 500;
     font-size: 14px;
 }
+
+@media (max-width: 576px) {
+    .eser-card {
+        padding: 8px;
+    }
+
+    .eser-card-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .eser-card-description {
+        font-size: 12px;
+        height: 36px;
+        -webkit-line-clamp: 2;
+    }
+
+    .eser-card-link-text {
+        font-size: 12px;
+        margin-top: 6px;
+    }
+}
