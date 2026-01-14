@@ -50,9 +50,8 @@
 
 .sort-dropdown {
     padding: 8px 32px 8px 12px;
-    border-radius: 8px;
-    border: 1.5px solid var(--border);
-    background: var(--surface);
+    border: none;
+    background: transparent;
     color: var(--text);
     font-size: 14px;
     font-weight: 500;
@@ -66,15 +65,12 @@
 }
 
 .sort-dropdown:hover {
-    border-color: var(--primary, #6366f1);
-    background-color: var(--surface-2);
+    opacity: 0.8;
 }
 
 .sort-dropdown:focus {
     outline: none;
-    border-color: var(--primary, #6366f1);
-    background-color: var(--surface-2);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    opacity: 0.9;
 }
 
 .eserler-grid {
@@ -118,13 +114,14 @@
 /* Mobile & Tablet specific styling */
 @media (max-width: 768px) {
     .eserler-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 }
 
 @media (max-width: 576px) {
     .eserler-grid {
-        gap: 10px;
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 }
