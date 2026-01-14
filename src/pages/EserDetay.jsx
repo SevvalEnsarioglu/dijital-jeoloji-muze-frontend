@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getEserById, getYorumByEserId, createEserYorum } from "../services/eserService";
+import { useToast } from "../context/ToastContext";
 import "../styles/EserDetay.css";
 
 const EserDetay = () => {
     const { id } = useParams();
+    const toast = useToast();
     const [eser, setEser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [yorumlar, setYorumlar] = useState([]);
@@ -51,7 +53,7 @@ const EserDetay = () => {
         e.preventDefault();
 
         if (!adSoyad || !email || !yorum) {
-            alert("Lütfen tüm alanları doldurun!");
+            toast.showWarn("Lütfen tüm alanları doldurun!");
             return;
         }
 
@@ -66,7 +68,7 @@ const EserDetay = () => {
             };
 
             await createEserYorum(yorumData);
-            alert("Yorumunuz başarıyla gönderildi!");
+            toast.showSuccess("Yorumunuz başarıyla gönderildi!");
 
             // formu temizle
             setAdSoyad("");
@@ -78,7 +80,7 @@ const EserDetay = () => {
             loadYorumlar();
         } catch (error) {
             console.error("Yorum gönderilirken hata:", error);
-            alert("Yorum gönderilirken bir hata oluştu!");
+            toast.showError("Yorum gönderilirken bir hata oluştu!");
         } finally {
             setSubmitting(false);
         }

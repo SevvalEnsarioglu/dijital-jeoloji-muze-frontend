@@ -18,6 +18,14 @@ import AdminLayout from "./admin/components/AdminLayout";
 import ManageContact from "./admin/pages/ManageContact";
 import ManageArtifacts from "./admin/pages/ManageArtifacts";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { ToastProvider } from "./context/ToastContext";
+
+// PrimeReact CSS
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "./styles/ConfirmDialog.css";
+import "./styles/Toast.css";
 // QR sadece admin dışında çalışsın
 function QrIfNotHome() {
     const location = useLocation();
@@ -53,107 +61,109 @@ function LayoutWrapper({ children }) {
 
 function App() {
     return (
-        <Router>
-            <LayoutWrapper>
-                <Routes>
+        <ToastProvider>
+            <Router>
+                <LayoutWrapper>
+                    <Routes>
 
-                    {/* Kullanıcı rotaları */}
-                    <Route path="/" element={<Anasayfa />} />
-                    <Route path="/anasayfa" element={<Anasayfa />} />
-                    <Route path="/hakkimizda" element={<Hakkimizda />} />
-                    <Route path="/iletisim" element={<Iletisim />} />
-                    <Route path="/eserler" element={<Eserler />} />
-                    <Route path="/eserler/:id" element={<EserDetay />} />
+                        {/* Kullanıcı rotaları */}
+                        <Route path="/" element={<Anasayfa />} />
+                        <Route path="/anasayfa" element={<Anasayfa />} />
+                        <Route path="/hakkimizda" element={<Hakkimizda />} />
+                        <Route path="/iletisim" element={<Iletisim />} />
+                        <Route path="/eserler" element={<Eserler />} />
+                        <Route path="/eserler/:id" element={<EserDetay />} />
 
 
-                    {/* Admin login (korumasız) */}
-                    <Route path="/admin/login" element={<Login />} />
+                        {/* Admin login (korumasız) */}
+                        <Route path="/admin/login" element={<Login />} />
 
-                    {/* Admin dashboard */}
-                    <Route
-                        path="/admin/dashboard"
-                        element={
-                            <AdminRoute>
-                                <AdminLayout>
-                                    <Dashboard />
-                                </AdminLayout>
-                            </AdminRoute>
-                        }
-                    />
+                        {/* Admin dashboard */}
+                        <Route
+                            path="/admin/dashboard"
+                            element={
+                                <AdminRoute>
+                                    <AdminLayout>
+                                        <Dashboard />
+                                    </AdminLayout>
+                                </AdminRoute>
+                            }
+                        />
 
-                    {/* Admin ana sayfa */}
-                    <Route
-                        path="/admin/anasayfa"
-                        element={
-                            <AdminRoute>
-                                <AdminLayout>
-                                    <ManageHomepage />
-                                </AdminLayout>
-                            </AdminRoute>
-                        }
-                    />
+                        {/* Admin ana sayfa */}
+                        <Route
+                            path="/admin/anasayfa"
+                            element={
+                                <AdminRoute>
+                                    <AdminLayout>
+                                        <ManageHomepage />
+                                    </AdminLayout>
+                                </AdminRoute>
+                            }
+                        />
 
-                    {/* Admin eserler */}
-                    <Route
-                        path="/admin/eserler"
-                        element={
-                            <AdminRoute>
-                                <AdminLayout>
-                                    <ManageArtifacts />
-                                </AdminLayout>
-                            </AdminRoute>
-                        }
-                    />
+                        {/* Admin eserler */}
+                        <Route
+                            path="/admin/eserler"
+                            element={
+                                <AdminRoute>
+                                    <AdminLayout>
+                                        <ManageArtifacts />
+                                    </AdminLayout>
+                                </AdminRoute>
+                            }
+                        />
 
-                    {/* Admin hakkımızda */}
-                    <Route
-                        path="/admin/hakkimizda"
-                        element={
-                            <AdminRoute>
-                                <AdminLayout>
-                                    <ManageAbout />
-                                </AdminLayout>
-                            </AdminRoute>
-                        }
-                    />
+                        {/* Admin hakkımızda */}
+                        <Route
+                            path="/admin/hakkimizda"
+                            element={
+                                <AdminRoute>
+                                    <AdminLayout>
+                                        <ManageAbout />
+                                    </AdminLayout>
+                                </AdminRoute>
+                            }
+                        />
 
-                    {/* Admin iletişim */}
-                    <Route
-                        path="/admin/iletisim"
-                        element={
-                            <AdminRoute>
-                                <AdminLayout>
-                                    <ManageContact />
-                                </AdminLayout>
-                            </AdminRoute>
-                        }
-                    />
+                        {/* Admin iletişim */}
+                        <Route
+                            path="/admin/iletisim"
+                            element={
+                                <AdminRoute>
+                                    <AdminLayout>
+                                        <ManageContact />
+                                    </AdminLayout>
+                                </AdminRoute>
+                            }
+                        />
 
-                    {/* Admin ziyaret saatleri */}
-                    <Route
-                        path="/admin/ziyaretsaatleri"
-                        element={
-                            <AdminRoute>
-                                <AdminLayout>
-                                    <ManageVisitingHours />
-                                </AdminLayout>
-                            </AdminRoute>
-                        }
-                    />
+                        {/* Admin ziyaret saatleri */}
+                        <Route
+                            path="/admin/ziyaretsaatleri"
+                            element={
+                                <AdminRoute>
+                                    <AdminLayout>
+                                        <ManageVisitingHours />
+                                    </AdminLayout>
+                                </AdminRoute>
+                            }
+                        />
 
-                    {/* /admin root path'ini dashboard'a yönlendir (login varsa), yoksa AdminRoute zaten login'e yönlendirir */}
-                    <Route
-                        path="/admin"
-                        element={
-                            <AdminRoute>
-                                <Navigate to="/admin/dashboard" replace />
-                            </AdminRoute>
-                        }
-                    />
+                        {/* /admin root path'ini dashboard'a yönlendir (login varsa), yoksa AdminRoute zaten login'e yönlendirir */}
+                        <Route
+                            path="/admin"
+                            element={
+                                <AdminRoute>
+                                    <Navigate to="/admin/dashboard" replace />
+                                </AdminRoute>
+                            }
+                        />
 
-                </Routes>
-            </LayoutWrapper>
-        </Router>
+                    </Routes>
+                </LayoutWrapper>
+            </Router>
+        </ToastProvider>
     );
 }
 

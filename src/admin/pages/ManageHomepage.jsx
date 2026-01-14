@@ -5,9 +5,11 @@ import {
     updateAnasayfa,
     deleteAnasayfa,
 } from "../services/anasayfaService";
+import { useToast } from "../../context/ToastContext";
 import "../styles/ManageHomepage.css";
 
 export default function ManageHomepage() {
+    const toast = useToast();
     const [components, setComponents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
@@ -91,34 +93,39 @@ export default function ManageHomepage() {
                     formData.aciklama,
                     formData.fotoFile
                 );
-                alert("Component güncellendi!");
+                toast.showSuccess("Component güncellendi!");
             } else {
                 // Yeni oluşturma
                 await createAnasayfa(formData.baslik, formData.aciklama, formData.fotoFile);
-                alert("Yeni component oluşturuldu!");
+                toast.showSuccess("Yeni component oluşturuldu!");
             }
             setShowModal(false);
             loadComponents();
         } catch (error) {
             console.error("Kaydetme hatası:", error);
-            alert("Bir hata oluştu!");
+            toast.showError("Bir hata oluştu!");
         }
     };
 
     // Sil
     const handleDelete = async () => {
         if (!selectedComponent) return;
-        if (!window.confirm("Bu component silinsin mi?")) return;
 
-        try {
-            await deleteAnasayfa(selectedComponent.id);
-            alert("Component silindi!");
-            setShowModal(false);
-            loadComponents();
-        } catch (error) {
-            console.error("Silme hatası:", error);
-            alert("Bir hata oluştu!");
-        }
+        toast.confirm({
+            message: 'Bu component silinsin mi?',
+            header: 'Component Sil',
+            accept: async () => {
+                try {
+                    await deleteAnasayfa(selectedComponent.id);
+                    toast.showSuccess("Component silindi!");
+                    setShowModal(false);
+                    loadComponents();
+                } catch (error) {
+                    console.error("Silme hatası:", error);
+                    toast.showError("Bir hata oluştu!");
+                }
+            }
+        });
     };
 
     if (loading) return <p className="loading">Yükleniyor...</p>;

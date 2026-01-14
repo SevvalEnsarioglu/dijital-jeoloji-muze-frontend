@@ -9,9 +9,11 @@ import {
     deleteEserYorum,
     updateOkunduDurumu
 } from "../services/eserService";
+import { useToast } from "../../context/ToastContext";
 import "../styles/ManageArtifacts.css";
 
 export default function ManageArtifacts() {
+    const toast = useToast();
     const [eserler, setEserler] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedEser, setSelectedEser] = useState(null);
@@ -44,7 +46,7 @@ export default function ManageArtifacts() {
             setEserler(data);
         } catch (error) {
             console.error("Eserler yüklenirken hata:", error);
-            alert("Eserler yüklenirken hata oluştu!");
+            toast.showError("Eserler yüklenirken hata oluştu!");
         } finally {
             setLoading(false);
         }
@@ -78,7 +80,7 @@ export default function ManageArtifacts() {
             setShowModal(true);
         } catch (error) {
             console.error("Eser detayları yüklenirken hata:", error);
-            alert("Eser detayları yüklenirken hata oluştu!");
+            toast.showError("Eser detayları yüklenirken hata oluştu!");
         }
     };
 
@@ -103,7 +105,7 @@ export default function ManageArtifacts() {
 
     const handleCreate = async () => {
         if (!isim || !foto) {
-            alert("Eser adı ve fotoğraf zorunludur!");
+            toast.showWarn("Eser adı ve fotoğraf zorunludur!");
             return;
         }
 
@@ -119,12 +121,12 @@ export default function ManageArtifacts() {
             formData.append("aciklama", aciklama);
 
             await createEser(formData);
-            alert("Eser başarıyla oluşturuldu!");
+            toast.showSuccess("Eser başarıyla oluşturuldu!");
             closeCreateModal();
             loadEserler();
         } catch (error) {
             console.error("Eser oluşturulurken hata:", error);
-            alert("Eser oluşturulurken hata oluştu!");
+            toast.showError("Eser oluşturulurken hata oluştu!");
         }
     };
 
@@ -148,28 +150,33 @@ export default function ManageArtifacts() {
             }
 
             await updateEser(selectedEser.id, formData);
-            alert("Eser başarıyla güncellendi!");
+            toast.showSuccess("Eser başarıyla güncellendi!");
             closeModal();
             loadEserler();
         } catch (error) {
             console.error("Eser güncellenirken hata:", error);
-            alert("Eser güncellenirken hata oluştu!");
+            toast.showError("Eser güncellenirken hata oluştu!");
         }
     };
 
     const handleDelete = async () => {
         if (!selectedEser) return;
-        if (!window.confirm(`"${selectedEser.isim}" adlı eseri silmek istediğinize emin misiniz?`)) return;
 
-        try {
-            await deleteEser(selectedEser.id);
-            alert("Eser başarıyla silindi!");
-            closeModal();
-            loadEserler();
-        } catch (error) {
-            console.error("Eser silinirken hata:", error);
-            alert("Eser silinirken hata oluştu!");
-        }
+        toast.confirm({
+            message: `"${selectedEser.isim}" adlı eseri silmek istediğinize emin misiniz?`,
+            header: 'Eser Sil',
+            accept: async () => {
+                try {
+                    await deleteEser(selectedEser.id);
+                    toast.showSuccess("Eser başarıyla silindi!");
+                    closeModal();
+                    loadEserler();
+                } catch (error) {
+                    console.error("Eser silinirken hata:", error);
+                    toast.showError("Eser silinirken hata oluştu!");
+                }
+            }
+        });
     };
 
     const openCommentsModal = async (eser) => {
@@ -182,7 +189,7 @@ export default function ManageArtifacts() {
             setYorumlar(comments);
         } catch (error) {
             console.error("Yorumlar yüklenirken hata:", error);
-            alert("Yorumlar yüklenirken hata oluştu!");
+            toast.showError("Yorumlar yüklenirken hata oluştu!");
             setYorumlar([]);
         } finally {
             setLoadingComments(false);
@@ -196,17 +203,21 @@ export default function ManageArtifacts() {
     };
 
     const handleDeleteComment = async (yorumId) => {
-        if (!window.confirm("Bu yorumu silmek istediğinize emin misiniz?")) return;
-
-        try {
-            await deleteEserYorum(yorumId);
-            alert("Yorum başarıyla silindi!");
-            const comments = await getYorumByEserId(selectedEser.id);
-            setYorumlar(comments);
-        } catch (error) {
-            console.error("Yorum silinirken hata:", error);
-            alert("Yorum silinirken hata oluştu!");
-        }
+        toast.confirm({
+            message: 'Bu yorumu silmek istediğinize emin misiniz?',
+            header: 'Yorum Sil',
+            accept: async () => {
+                try {
+                    await deleteEserYorum(yorumId);
+                    toast.showSuccess("Yorum başarıyla silindi!");
+                    const comments = await getYorumByEserId(selectedEser.id);
+                    setYorumlar(comments);
+                } catch (error) {
+                    console.error("Yorum silinirken hata:", error);
+                    toast.showError("Yorum silinirken hata oluştu!");
+                }
+            }
+        });
     };
 
     const handleToggleReadStatus = async (yorum) => {
@@ -221,7 +232,7 @@ export default function ManageArtifacts() {
             setYorumlar(updatedComments);
         } catch (error) {
             console.error("Okundu durumu güncellenirken hata:", error);
-            alert("Durum güncellenirken hata oluştu!");
+            toast.showError("Durum güncellenirken hata oluştu!");
         }
     };
 
@@ -239,7 +250,7 @@ export default function ManageArtifacts() {
             window.URL.revokeObjectURL(url);
         } catch (error) {
             console.error("Hata:", error);
-            alert("QR kod indirilirken hata oluştu!");
+            toast.showError("QR kod indirilirken hata oluştu!");
         }
     };
 

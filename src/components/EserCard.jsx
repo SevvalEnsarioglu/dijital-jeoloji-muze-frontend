@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/EserDetay.css";
+import "../styles/EserCard.css";
 
 const EserCard = ({ eser }) => {
     if (!eser) return null;

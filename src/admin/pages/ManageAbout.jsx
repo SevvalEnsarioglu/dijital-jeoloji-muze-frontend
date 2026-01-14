@@ -5,9 +5,11 @@ import {
   updateHakkimizda,
   deleteHakkimizda
 } from "../services/hakkimizdaService";
+import { useToast } from "../../context/ToastContext";
 import "../styles/ManageAbout.css";
 
 export default function ManageAbout() {
+  const toast = useToast();
   const [hakkinda, setHakkinda] = useState("");
   const [adres, setAdres] = useState("");
   const [telefon, setTelefon] = useState("");
@@ -39,23 +41,28 @@ export default function ManageAbout() {
 
     if (recordExists) {
       await updateHakkimizda(payload);
-      alert("Güncellendi!");
+      toast.showSuccess("Güncellendi!");
     } else {
       await createHakkimizda(payload);
-      alert("Oluşturuldu!");
+      toast.showSuccess("Oluşturuldu!");
       setRecordExists(true);
     }
   };
 
   const remove = async () => {
-    if (!window.confirm("Hakkımızda içeriği silinsin mi?")) return;
-    await deleteHakkimizda();
-    setHakkinda("");
-    setAdres("");
-    setTelefon("");
-    setEmail("");
-    setRecordExists(false);
-    alert("Silindi!");
+    toast.confirm({
+      message: 'Hakkımızda içeriği silinsin mi?',
+      header: 'İçerik Sil',
+      accept: async () => {
+        await deleteHakkimizda();
+        setHakkinda("");
+        setAdres("");
+        setTelefon("");
+        setEmail("");
+        setRecordExists(false);
+        toast.showSuccess("Silindi!");
+      }
+    });
   };
 
   if (loading) return <p>Yükleniyor...</p>;

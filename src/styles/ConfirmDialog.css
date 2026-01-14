@@ -1,0 +1,151 @@
+/* PrimeReact ConfirmDialog Custom Styling */
+
+/* Dialog Container */
+.p-confirm-dialog {
+    border-radius: 16px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+    border: none !important;
+    overflow: hidden !important;
+    max-width: 450px !important;
+}
+
+/* Dialog Header */
+.p-confirm-dialog .p-dialog-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    padding: 24px 28px !important;
+    border-bottom: none !important;
+}
+
+.p-confirm-dialog .p-dialog-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: white !important;
+}
+
+.p-confirm-dialog .p-dialog-header-icon {
+    color: white !important;
+    width: 32px !important;
+    height: 32px !important;
+    transition: all 0.2s ease !important;
+}
+
+.p-confirm-dialog .p-dialog-header-icon:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: rotate(90deg) !important;
+}
+
+/* Dialog Content */
+.p-confirm-dialog .p-dialog-content {
+    padding: 32px 28px !important;
+    background: var(--surface, #ffffff) !important;
+}
+
+.p-confirm-dialog-message {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    color: var(--text, #1f2937) !important;
+    margin-left: 16px !important;
+}
+
+/* Warning Icon */
+.p-confirm-dialog .p-confirm-dialog-icon {
+    font-size: 42px !important;
+    color: #f59e0b !important;
+    margin-right: 0 !important;
+}
+
+/* Dialog Footer */
+.p-confirm-dialog .p-dialog-footer {
+    padding: 20px 28px 28px !important;
+    background: var(--surface, #ffffff) !important;
+    border-top: 1px solid var(--border, #e5e7eb) !important;
+    display: flex !important;
+    gap: 12px !important;
+    justify-content: flex-end !important;
+}
+
+/* Buttons */
+.p-confirm-dialog .p-button {
+    padding: 12px 28px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+}
+
+/* Danger Button (Evet) */
+.p-confirm-dialog .p-button-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+.p-confirm-dialog .p-button-danger:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
+}
+
+.p-confirm-dialog .p-button-danger:active {
+    transform: translateY(0) !important;
+}
+
+/* Text Button (Hayır) */
+.p-confirm-dialog .p-button-text {
+    background: var(--surface-2, #f3f4f6) !important;
+    color: var(--text, #374151) !important;
+    box-shadow: none !important;
+}
+
+.p-confirm-dialog .p-button-text:hover {
+    background: var(--border, #e5e7eb) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+
+    .p-confirm-dialog .p-dialog-content,
+    .p-confirm-dialog .p-dialog-footer {
+        background: var(--surface, #1f2937) !important;
+    }
+
+    .p-confirm-dialog-message {
+        color: var(--text, #f3f4f6) !important;
+    }
+
+    .p-confirm-dialog .p-button-text {
+        background: var(--surface-2, #374151) !important;
+        color: var(--text, #f3f4f6) !important;
+    }
+
+    .p-confirm-dialog .p-button-text:hover {
+        background: var(--border, #4b5563) !important;
+    }
+}
+
+/* Animation */
+.p-confirm-dialog {
+    animation: dialogFadeIn 0.3s ease-out !important;
+}
+
+@keyframes dialogFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Backdrop */
+.p-dialog-mask {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(4px) !important;
+}
