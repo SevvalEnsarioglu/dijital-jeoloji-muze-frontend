@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
     getAllEser,
+    getEserById,
     createEser,
     updateEser,
     deleteEser,
@@ -59,19 +60,26 @@ export default function ManageArtifacts() {
         resetForm();
     };
 
-    const openDetailModal = (eser) => {
-        setSelectedEser(eser);
-        setIsim(eser.isim || "");
-        setDonem(eser.donem || "");
-        setBoyut(eser.boyut || "");
-        setGetirenKisi(eser.getirenKisi || "");
-        setGetirildigiTarih(eser.getirildigiTarih || "");
-        setAciklama(eser.aciklama || "");
-        setCurrentFoto(eser.foto || "");
-        setCurrentSes(eser.ses || "");
-        setFoto(null);
-        setSes(null);
-        setShowModal(true);
+    const openDetailModal = async (eser) => {
+        try {
+            // Fetch full details including QR code
+            const fullDetails = await getEserById(eser.id);
+            setSelectedEser(fullDetails);
+            setIsim(fullDetails.isim || "");
+            setDonem(fullDetails.donem || "");
+            setBoyut(fullDetails.boyut || "");
+            setGetirenKisi(fullDetails.getirenKisi || "");
+            setGetirildigiTarih(fullDetails.getirildigiTarih || "");
+            setAciklama(fullDetails.aciklama || "");
+            setCurrentFoto(fullDetails.foto || "");
+            setCurrentSes(fullDetails.ses || "");
+            setFoto(null);
+            setSes(null);
+            setShowModal(true);
+        } catch (error) {
+            console.error("Eser detayları yüklenirken hata:", error);
+            alert("Eser detayları yüklenirken hata oluştu!");
+        }
     };
 
     const closeModal = () => {

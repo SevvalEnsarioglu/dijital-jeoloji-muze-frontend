@@ -9,7 +9,7 @@ export const adminAxios = axios.create({
 // Request interceptor - Her istekte token ekle
 adminAxios.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('adminToken');
+        const token = sessionStorage.getItem('adminToken');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -26,8 +26,8 @@ adminAxios.interceptors.response.use(
     (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
             // Token geçersiz veya yok, login sayfasına yönlendir
-            localStorage.removeItem('adminToken');
-            localStorage.removeItem('adminUsername');
+            sessionStorage.removeItem('adminToken');
+            sessionStorage.removeItem('adminUsername');
             window.location.href = '/admin/login';
         }
         return Promise.reject(error);

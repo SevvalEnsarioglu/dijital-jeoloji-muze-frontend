@@ -18,9 +18,9 @@ export async function loginAdmin(username, password) {
 
         const { token, username: returnedUsername, message } = response.data;
 
-        // Token'ı ve kullanıcı adını localStorage'a kaydet
-        localStorage.setItem('adminToken', token);
-        localStorage.setItem('adminUsername', returnedUsername);
+        // Token'ı ve kullanıcı adını sessionStorage'a kaydet (tarayıcı kapanınca silinir)
+        sessionStorage.setItem('adminToken', token);
+        sessionStorage.setItem('adminUsername', returnedUsername);
 
         return {
             success: true,
@@ -40,8 +40,8 @@ export async function loginAdmin(username, password) {
  * Admin logout - Token'ı ve kullanıcı bilgilerini temizler
  */
 export function logoutAdmin() {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminUsername');
+    sessionStorage.removeItem('adminToken');
+    sessionStorage.removeItem('adminUsername');
 }
 
 /**
@@ -49,7 +49,7 @@ export function logoutAdmin() {
  * @returns {boolean} - Token varsa true, yoksa false
  */
 export function isAdminAuthenticated() {
-    return !!localStorage.getItem('adminToken');
+    return !!sessionStorage.getItem('adminToken');
 }
 
 /**
@@ -57,7 +57,7 @@ export function isAdminAuthenticated() {
  * @returns {string|null} - JWT token veya null
  */
 export function getAdminToken() {
-    return localStorage.getItem('adminToken');
+    return sessionStorage.getItem('adminToken');
 }
 
 /**
@@ -65,5 +65,5 @@ export function getAdminToken() {
  * @returns {string|null} - Kullanıcı adı veya null
  */
 export function getAdminUsername() {
-    return localStorage.getItem('adminUsername');
+    return sessionStorage.getItem('adminUsername');
 }
