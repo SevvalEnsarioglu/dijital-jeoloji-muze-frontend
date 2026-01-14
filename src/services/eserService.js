@@ -4,8 +4,10 @@ import { API_BASE_URL } from "../config/api";
 const API_URL = `${API_BASE_URL}/api/eser`;
 const YORUM_API_URL = `${API_BASE_URL}/api/eser-yorum`;
 
-export const getAllEser = async () => {
-    const response = await axios.get(API_URL);
+export const getAllEser = async (sortBy = 'id', sortDirection = 'DESC') => {
+    const response = await axios.get(API_URL, {
+        params: { sortBy, sortDirection }
+    });
     return response.data;
 };
 
